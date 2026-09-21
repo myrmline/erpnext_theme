@@ -1,0 +1,166 @@
+/* Responsive behaviour.
+ *   ≥ 1200px  full workspace sidebar
+ *   992–1199  narrower workspace sidebar (the rail stays one shortcut away)
+ *   < 992px   Frappe's own drawer (styled in the sidebar file), stacked layout
+ *   < 576px   single column, touch-sized controls, full-width dialogs */
+
+/* Laptop / small desktop ----------------------------------------------------- */
+
+@media (min-width: 992px) and (max-width: 1199px) {
+	/* :root.myrmex-enabled outranks the runtime :root block from Theme Settings. */
+	:root.myrmex-enabled {
+		--myrmex-sidebar-width: 220px;
+	}
+
+	.myrmex-enabled .navbar .search-bar {
+		flex-basis: 320px;
+	}
+
+	.myrmex-enabled #navbar-breadcrumbs li a {
+		max-width: 14ch;
+	}
+}
+
+/* Tablet and mobile ----------------------------------------------------------- */
+
+@media (max-width: 991px) {
+	.myrmex-enabled header.navbar {
+		padding: 0 var(--myrmex-space-3);
+	}
+
+	.myrmex-enabled .myrmex-nav-toggle {
+		display: none !important;
+	}
+
+	.myrmex-enabled .navbar .search-bar {
+		flex-basis: auto;
+		max-width: none;
+	}
+
+	.myrmex-enabled .page-title .title-text {
+		font-size: var(--myrmex-text-lg);
+	}
+
+	.myrmex-enabled [data-page-route="Workspaces"] .layout-main-section {
+		padding: var(--myrmex-space-4);
+	}
+
+	/* Cards and form columns stack. */
+	.myrmex-enabled .form-column {
+		width: 100%;
+		flex: 0 0 100%;
+		max-width: 100%;
+	}
+
+	.myrmex-enabled .layout-side-section {
+		padding-inline-end: 0;
+	}
+
+	/* Tables scroll instead of squeezing. */
+	.myrmex-enabled .frappe-list .result,
+	.myrmex-enabled .datatable,
+	.myrmex-enabled .form-grid {
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	.myrmex-enabled .form-tabs-list .form-tabs {
+		overflow-x: auto;
+		scrollbar-width: none;
+	}
+
+	.myrmex-enabled .form-tabs-list .form-tabs::-webkit-scrollbar {
+		display: none;
+	}
+
+	/* Comfortable touch targets. */
+	.myrmex-enabled .btn,
+	.myrmex-enabled .dropdown-item,
+	.myrmex-enabled .navbar-nav > .nav-item > .nav-link {
+		min-height: 40px;
+	}
+
+	.myrmex-enabled .list-row {
+		min-height: var(--myrmex-touch-target);
+	}
+
+	.myrmex-enabled .btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+	}
+}
+
+/* Phone ---------------------------------------------------------------------- */
+
+@media (max-width: 575px) {
+	:root.myrmex-enabled {
+		--myrmex-card-padding: 14px;
+	}
+
+	.myrmex-enabled .layout-main-section .widget,
+	.myrmex-enabled .std-form-layout > .form-layout > .form-page,
+	.myrmex-enabled .layout-main-section.frappe-card {
+		border-radius: var(--myrmex-radius-md);
+	}
+
+	.myrmex-enabled .form-section.card-section {
+		padding-inline: var(--myrmex-space-1);
+	}
+
+	.myrmex-enabled .number-widget-box .widget-content .number {
+		font-size: var(--myrmex-text-2xl);
+	}
+
+	.myrmex-enabled .frappe-card .page-form,
+	.myrmex-enabled .list-paging-area {
+		padding-inline: var(--myrmex-space-3);
+	}
+
+	/* Dialogs use the full width and keep their actions reachable. */
+	.myrmex-enabled .modal-dialog {
+		margin: var(--myrmex-space-2);
+	}
+
+	.myrmex-enabled .modal-content {
+		border-radius: var(--myrmex-radius-lg);
+		max-height: calc(100dvh - 2 * var(--myrmex-space-2));
+	}
+
+	.myrmex-enabled .modal-body {
+		padding: var(--myrmex-space-4);
+		overflow-y: auto;
+	}
+
+	.myrmex-enabled .modal-footer {
+		position: sticky;
+		bottom: 0;
+		padding-bottom: max(var(--myrmex-space-3), env(safe-area-inset-bottom));
+	}
+
+	.myrmex-enabled .modal-footer .btn {
+		flex: 1 1 auto;
+	}
+
+	/* The logo alone is enough here. */
+	.myrmex-enabled .navbar-brand .myrmex-wordmark {
+		display: none;
+	}
+}
+
+/* Print ---------------------------------------------------------------------- */
+
+@media print {
+	.myrmex-enabled .layout-side-section,
+	.myrmex-enabled header.navbar,
+	.myrmex-enabled .page-actions,
+	.myrmex-enabled .myrmex-tooltip {
+		display: none !important;
+	}
+
+	.myrmex-enabled .std-form-layout > .form-layout > .form-page,
+	.myrmex-enabled .layout-main-section.frappe-card {
+		box-shadow: none;
+		border-color: #ddd;
+	}
+}

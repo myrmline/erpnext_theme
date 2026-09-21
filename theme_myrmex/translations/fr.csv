@@ -1,0 +1,202 @@
+0 keeps them until the user deletes them.,0 les conserve jusqu'à ce que l'utilisateur les supprime.
+AI provider,Fournisseur d'IA
+API endpoint,Point de terminaison de l'API
+Accent colour,Couleur d'accent
+Accent edge,Liseré d'accent
+"Add at least one page pattern, or show the assistant everywhere.","Ajoutez au moins un modèle de page, ou affichez l'assistant partout."
+All borders,Toutes les bordures
+Allowed roles,Rôles autorisés
+Application context,Contexte de l'application
+"Applies to list views, report views, child tables and grids.","S'applique aux vues liste, aux vues rapport, aux tableaux enfants et aux grilles."
+Ask a question…,Posez une question…
+Assistant hidden for this session. Open it again from your user menu.,Assistant masqué pour cette session. Rouvrez-le depuis votre menu utilisateur.
+Assistant is typing,L'assistant écrit
+Assistant message bubble,Bulle des messages de l'assistant
+Assistant name,Nom de l'assistant
+Assistant not ready,Assistant non prêt
+Assistant said:,L'assistant a dit :
+Azure OpenAI needs the full chat completions URL as the API endpoint.,Azure OpenAI nécessite l'URL complète de chat/completions comme point de terminaison.
+Back to conversation,Retour à la conversation
+Background tint,Teinte de fond
+Between 0 and 50.,Entre 0 et 50.
+Border colour,Couleur des bordures
+Border width (px),Épaisseur des bordures (px)
+Borders,Bordures
+Borders and spacing,Bordures et espacement
+Bottom left,En bas à gauche
+Bottom right,En bas à droite
+Buttons,Boutons
+Cell padding (px),Marge intérieure des cellules (px)
+Centre,Au centre
+Chatbot Conversation,Conversation de l'assistant
+Chatbot Message,Message de l'assistant
+Chatbot Settings,Paramètres de l'assistant
+Chatbot Settings has not been created yet.,Les paramètres de l'assistant n'ont pas encore été créés.
+Chatbot Suggestion,Suggestion de l'assistant
+Close assistant,Fermer l'assistant
+Collapse sidebar,Réduire la barre latérale
+Connection failed,Échec de la connexion
+Connection works,La connexion fonctionne
+Contacting the AI provider,Contact du fournisseur d'IA
+Conversation history,Historique des conversations
+Conversation history is turned off on this site.,L'historique des conversations est désactivé sur ce site.
+Conversations kept per user,Conversations conservées par utilisateur
+Corner radius (px),Arrondi des coins (px)
+Could not load this conversation. Check your connection and try again.,Impossible de charger cette conversation. Vérifiez votre connexion et réessayez.
+Could not load your conversations.,Impossible de charger vos conversations.
+Current page and module,Page et module actuels
+Delete all conversations,Supprimer toutes les conversations
+Delete all your conversations with the assistant?,Supprimer toutes vos conversations avec l'assistant ?
+Delete conversation,Supprimer la conversation
+Delete idle conversations after (days),Supprimer les conversations inactives après (jours)
+Delete this conversation? This cannot be undone.,Supprimer cette conversation ? Cette action est irréversible.
+Document: form views. List: list and report views.,Document : vues formulaire. Liste : vues liste et rapport.
+Don't share,Ne pas partager
+Edges,Aux extrémités
+Empty shows the suggestion in every language.,Vide : la suggestion s'affiche dans toutes les langues.
+Enable assistant,Activer l'assistant
+"Enter to send, Shift+Enter for a new line","Entrée pour envoyer, Maj+Entrée pour aller à la ligne"
+Everywhere,Partout
+Everywhere except listed pages,Partout sauf sur les pages listées
+Expand sidebar,Développer la barre latérale
+Fields of the open document,Champs du document ouvert
+Fill in {0} before enabling the assistant.,Renseignez {0} avant d'activer l'assistant.
+Header,En-tête
+Header background,Fond de l'en-tête
+Header text,Texte de l'en-tête
+Header weight,Graisse de l'en-tête
+Hello {0}! How can I help you today?,Bonjour {0} ! Comment puis-je vous aider aujourd'hui ?
+Hello! How can I help you today?,Bonjour ! Comment puis-je vous aider aujourd'hui ?
+Horizontal lines,Lignes horizontales
+Hover,Survol
+Hover background,Fond au survol
+Invalid message role: {0},Rôle de message invalide : {0}
+Keep conversation history,Conserver l'historique des conversations
+Last message,Dernier message
+Leave a colour empty to follow the active Myrmex theme.,Laissez une couleur vide pour suivre le thème Myrmex actif.
+Leave empty for the provider's default. Azure: the full chat/completions URL including api-version.,Laissez vide pour la valeur par défaut du fournisseur. Azure : l'URL chat/completions complète avec api-version.
+Leave empty to allow every Desk user. Portal (website) users never see the assistant.,Laissez vide pour autoriser tous les utilisateurs du Desk. Les utilisateurs du portail ne voient jamais l'assistant.
+Maximum document fields,Nombre maximal de champs du document
+Maximum message length (characters),Longueur maximale d'un message (caractères)
+Maximum reply tokens,Nombre maximal de jetons de réponse
+Messages per conversation,Messages par conversation
+Messages per user per day,Messages par utilisateur par jour
+Messages per user per minute,Messages par utilisateur par minute
+Minimal,Minimal
+Minimize,Réduire
+Myrmex Assistant,Assistant Myrmex
+Never share these DocTypes,Ne jamais partager ces DocTypes
+New conversation,Nouvelle conversation
+New {0},Nouveau {0}
+No saved conversations yet.,Aucune conversation enregistrée pour l'instant.
+"One Desk route per line, * as wildcard. Examples: Form/Sales Order/*, List/*, Workspaces/Selling","Une route du Desk par ligne, * comme joker. Exemples : Form/Sales Order/*, List/*, Workspaces/Selling"
+"One DocType per line. User, credentials, logs and the assistant's own records are always excluded.","Un DocType par ligne. Les utilisateurs, identifiants, journaux et enregistrements de l'assistant sont toujours exclus."
+Only on listed pages,Uniquement sur les pages listées
+Open assistant,Ouvrir l'assistant
+Open automatically when the Desk loads,Ouvrir automatiquement au chargement du Desk
+Open once right after login,Ouvrir une fois juste après la connexion
+Open {0},Ouvrir {0}
+"OpenAI Compatible also covers Ollama, vLLM, LM Studio, Mistral, Groq and similar services.","OpenAI Compatible couvre aussi Ollama, vLLM, LM Studio, Mistral, Groq et services similaires."
+Page not shared,Page non partagée
+Page patterns,Modèles de pages
+Pagination alignment,Alignement de la pagination
+Pagination style,Style de pagination
+Panel background,Arrière-plan du panneau
+Panel height (px),Hauteur du panneau (px)
+Panel width (px),Largeur du panneau (px)
+Pills,Pastilles
+Please log in to use the assistant.,Connectez-vous pour utiliser l'assistant.
+Previous messages sent with each question,Messages précédents envoyés avec chaque question
+Prompt sent,Invite envoyée
+Prompt tokens,Jetons d'invite
+Provider latency (ms),Latence du fournisseur (ms)
+"Put credentials in the API key field, not in the endpoint URL.","Mettez les identifiants dans le champ Clé API, pas dans l'URL."
+Replace the suggestion table with the default prompts?,Remplacer le tableau des suggestions par les invites par défaut ?
+Reply language,Langue des réponses
+Reply tokens,Jetons de réponse
+Request timeout (seconds),Délai d'expiration de la requête (secondes)
+Restore default suggestions,Restaurer les suggestions par défaut
+"Rounding of report tables, child tables and grids. List views follow the card radius.","Arrondi des tableaux de rapport, des tableaux enfants et des grilles. Les vues liste suivent l'arrondi des cartes."
+Row background,Fond des lignes
+Row height (px),Hauteur des lignes (px)
+Row hover,Survol des lignes
+Row text,Texte des lignes
+Rows,Lignes
+Search or type a command,Rechercher ou saisir une commande
+Selected row,Ligne sélectionnée
+Semibold,Semi-gras
+Send message,Envoyer le message
+Set a model and test the connection before saving.,Définissez un modèle et testez la connexion avant d'enregistrer.
+Share page,Partager la page
+Share this page with the assistant,Partager cette page avec l'assistant
+Show on pages,Afficher sur les pages
+Show only on,Afficher uniquement sur
+Show suggested prompts,Afficher les suggestions
+Show typing indicator,Afficher l'indicateur de saisie
+"Shown when a conversation starts. Leave empty for the built-in, translated greeting.",Affiché au début d'une conversation. Laissez vide pour la salutation intégrée et traduite.
+Something went wrong.,Une erreur s'est produite.
+Spacing,Espacement
+"Square image. Without one, the assistant uses the Myrmex mark with its initial.","Image carrée. Sans image, l'assistant utilise le logo Myrmex avec son initiale."
+Start a conversation,Démarrer une conversation
+Start a new conversation,Démarrer une nouvelle conversation
+Started on page,Commencée sur la page
+Stop sharing this page with the assistant,Ne plus partager cette page avec l'assistant
+Stored encrypted and only used on the server. It is never sent to browsers.,Stockée chiffrée et utilisée uniquement sur le serveur. Elle n'est jamais envoyée aux navigateurs.
+Stripe background,Fond des lignes alternées
+Striped rows,Lignes alternées
+Suggested prompts,Invites suggérées
+Suggested questions,Questions suggérées
+System prompt,Invite système
+Table Styles,Styles de tableau
+Table radius (px),Arrondi des tableaux (px)
+Test connection,Tester la connexion
+That conversation no longer exists.,Cette conversation n'existe plus.
+The AI provider is busy right now. Try again in a minute.,Le fournisseur d'IA est occupé. Réessayez dans une minute.
+The AI provider rejected the assistant's credentials. Ask an administrator to check the API key.,Le fournisseur d'IA a refusé les identifiants de l'assistant. Demandez à un administrateur de vérifier la clé API.
+The AI provider returned an error ({0}).,Le fournisseur d'IA a renvoyé une erreur ({0}).
+The AI provider sent a reply the assistant could not read.,Le fournisseur d'IA a envoyé une réponse illisible pour l'assistant.
+The AI provider sent an unexpectedly large reply.,Le fournisseur d'IA a envoyé une réponse anormalement volumineuse.
+The API endpoint must be a full http(s) URL.,Le point de terminaison doit être une URL http(s) complète.
+The API endpoint uses plain http. Messages and the API key will travel unencrypted.,Le point de terminaison utilise http simple. Les messages et la clé API circuleront sans chiffrement.
+The assistant could not be reached. Check your connection.,Impossible de joindre l'assistant. Vérifiez votre connexion.
+The assistant could not reach the AI provider.,L'assistant n'a pas pu joindre le fournisseur d'IA.
+The assistant has no API endpoint configured.,Aucun point de terminaison n'est configuré pour l'assistant.
+The assistant has no API key configured.,Aucune clé API n'est configurée pour l'assistant.
+The assistant has no model configured.,Aucun modèle n'est configuré pour l'assistant.
+The assistant is turned off.,L'assistant est désactivé.
+The assistant returned an empty answer. Try rephrasing.,L'assistant a renvoyé une réponse vide. Essayez de reformuler.
+The assistant took too long to answer. Try again in a moment.,L'assistant a mis trop de temps à répondre. Réessayez dans un instant.
+The model or deployment name your provider expects.,Le nom du modèle ou du déploiement attendu par votre fournisseur.
+"The page or document the user was on. Only the reference is stored, not its data.","La page ou le document consulté. Seule la référence est stockée, pas ses données."
+Theme updated,Thème mis à jour
+Thinking…,Réflexion…
+This conversation is full. Start a new one to keep going.,Cette conversation est pleine. Démarrez-en une nouvelle pour continuer.
+This page,Cette page
+"Tone, scope and company-specific guidance. Safety and permission rules are always added after it and cannot be removed here.","Ton, périmètre et consignes propres à l'entreprise. Les règles de sécurité et d'autorisation sont toujours ajoutées ensuite et ne peuvent pas être retirées ici."
+Try again,Réessayer
+Turn on after the AI provider below is configured and tested.,Activez après avoir configuré et testé le fournisseur d'IA ci-dessous.
+Type a message first.,Saisissez d'abord un message.
+Unknown AI provider: {0},Fournisseur d'IA inconnu : {0}
+Unknown error,Erreur inconnue
+Untitled conversation,Conversation sans titre
+Uppercase headers,En-têtes en majuscules
+Use at most 100 page patterns.,Utilisez au maximum 100 modèles de pages.
+User language,Langue de l'utilisateur
+User language follows each person's language setting in Frappe.,La langue de l'utilisateur suit le réglage de langue de chaque personne dans Frappe.
+User's open assignments (ToDo),Affectations ouvertes de l'utilisateur (ToDo)
+User's recent changes in the current DocType,Modifications récentes de l'utilisateur dans le DocType actuel
+Uses only data you can access,N'utilise que les données auxquelles vous avez accès
+Using: {0},Utilise : {0}
+View conversations,Voir les conversations
+Welcome message,Message d'accueil
+What the assistant may read about the page a user is on. Everything is read with that user's permissions; restricted fields and records are left out.,Ce que l'assistant peut lire de la page consultée. Tout est lu avec les autorisations de l'utilisateur ; les champs et enregistrements restreints sont exclus.
+"When off, nothing is stored on the server and conversations last only for the browser tab.",Désactivé : rien n'est stocké sur le serveur et les conversations ne durent que le temps de l'onglet.
+You are not allowed to use the assistant.,Vous n'êtes pas autorisé à utiliser l'assistant.
+You said:,Vous avez dit :
+"You're sending messages quickly. Wait a minute, then try again.",Vous envoyez des messages trop vite. Patientez une minute puis réessayez.
+You've reached today's message limit. It resets within 24 hours.,Vous avez atteint la limite de messages du jour. Elle se réinitialise sous 24 heures.
+Your message bubble,Bulle de vos messages
+Your message is too long. Keep it under {0} characters.,Votre message est trop long. Limitez-le à {0} caractères.
+{0} answered in {1} ms using {2}.,{0} a répondu en {1} ms avec {2}.
+{0} is not a valid hex colour: {1},{0} n'est pas une couleur hexadécimale valide : {1}
+{0} list,Liste {0}

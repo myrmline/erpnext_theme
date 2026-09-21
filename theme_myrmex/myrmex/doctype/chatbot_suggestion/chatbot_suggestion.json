@@ -1,0 +1,70 @@
+{
+ "actions": [],
+ "creation": "2026-09-17 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "label",
+  "prompt",
+  "language",
+  "needs",
+  "enabled"
+ ],
+ "fields": [
+  {
+   "fieldname": "label",
+   "fieldtype": "Data",
+   "label": "Label",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "prompt",
+   "fieldtype": "Small Text",
+   "label": "Prompt sent",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 4
+  },
+  {
+   "fieldname": "language",
+   "fieldtype": "Select",
+   "label": "Language",
+   "options": "\nen\nfr\nar",
+   "in_list_view": 1,
+   "columns": 1,
+   "description": "Empty shows the suggestion in every language."
+  },
+  {
+   "fieldname": "needs",
+   "fieldtype": "Select",
+   "label": "Show only on",
+   "options": "\nDocument\nList",
+   "in_list_view": 1,
+   "columns": 1,
+   "description": "Document: form views. List: list and report views."
+  },
+  {
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled",
+   "default": "1",
+   "in_list_view": 1,
+   "columns": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-09-17 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Myrmex",
+ "name": "Chatbot Suggestion",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "istable": 1,
+ "editable_grid": 1
+}

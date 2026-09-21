@@ -1,0 +1,144 @@
+/* Empty, loading and error states.
+ * These are the moments where the Desk has nothing to show yet, so they get
+ * the same care as content: a calm surface, a clear message, one action. */
+
+/* Loading ------------------------------------------------------------------ */
+
+@keyframes myrmex-shimmer {
+	from {
+		background-position: 150% 0;
+	}
+	to {
+		background-position: -50% 0;
+	}
+}
+
+.myrmex-enabled .myrmex-skeleton,
+.myrmex-enabled .workspace-skeleton .skeleton-card,
+.myrmex-enabled .workspace-sidebar-skeleton .sidebar-box,
+.myrmex-enabled .list-skeleton-box {
+	background-color: var(--skeleton-bg);
+	background-image: linear-gradient(
+		100deg,
+		transparent 20%,
+		color-mix(in srgb, var(--myrmex-surface) 55%, transparent) 50%,
+		transparent 80%
+	);
+	background-size: 200% 100%;
+	background-repeat: no-repeat;
+	border-radius: var(--myrmex-radius-md);
+	animation: myrmex-shimmer 1.4s ease-in-out infinite;
+}
+
+.myrmex-enabled .workspace-skeleton .skeleton-card {
+	border-radius: var(--myrmex-card-radius);
+}
+
+.myrmex-enabled .workspace-sidebar-skeleton .sidebar-box {
+	border-radius: var(--myrmex-radius-md);
+}
+
+/* The in-list "Loading..." overlay. */
+.myrmex-enabled .frappe-list .freeze {
+	color: var(--myrmex-muted);
+	background-color: color-mix(in srgb, var(--myrmex-surface) 80%, transparent);
+}
+
+/* Full-page freeze (frappe.dom.freeze). */
+.myrmex-enabled #freeze {
+	background-color: color-mix(in srgb, var(--myrmex-background) 70%, transparent);
+	-webkit-backdrop-filter: blur(2px);
+	backdrop-filter: blur(2px);
+}
+
+.myrmex-enabled #freeze .freeze-message-container .freeze-message {
+	padding: var(--myrmex-space-3) var(--myrmex-space-4);
+	border: 1px solid var(--myrmex-border);
+	border-radius: var(--myrmex-radius-md);
+	background-color: var(--myrmex-surface);
+	box-shadow: var(--myrmex-shadow-lg);
+	color: var(--myrmex-text);
+	font-weight: var(--myrmex-weight-medium);
+}
+
+/* Top progress bar used during navigation. */
+.myrmex-enabled .progress-bar {
+	background-color: var(--myrmex-primary);
+}
+
+/* Empty ------------------------------------------------------------------- */
+
+.myrmex-enabled .no-result,
+.myrmex-enabled .msg-box {
+	color: var(--myrmex-muted);
+}
+
+.myrmex-enabled .frappe-list .no-result {
+	min-height: 320px;
+	padding: var(--myrmex-space-6) var(--myrmex-space-4);
+}
+
+.myrmex-enabled .msg-box {
+	max-width: 420px;
+	margin-inline: auto;
+	text-align: center;
+}
+
+.myrmex-enabled .msg-box .null-state {
+	max-width: 120px;
+	height: auto;
+	margin-bottom: var(--myrmex-space-4);
+	opacity: 0.9;
+}
+
+.myrmex-enabled .msg-box p {
+	font-size: var(--myrmex-text-md);
+	color: var(--myrmex-muted);
+	margin-bottom: var(--myrmex-space-4);
+}
+
+.myrmex-enabled .msg-box p:first-of-type {
+	color: var(--myrmex-text);
+	font-weight: var(--myrmex-weight-semibold);
+}
+
+.myrmex-enabled .form-grid .grid-empty {
+	padding: var(--myrmex-space-5) var(--myrmex-space-3);
+}
+
+/* Errors ------------------------------------------------------------------ */
+
+/* Message dialogs (frappe.msgprint / frappe.throw). */
+.myrmex-enabled .msgprint-dialog .modal-title {
+	display: flex;
+	align-items: center;
+	gap: var(--myrmex-space-2);
+}
+
+.myrmex-enabled .msgprint-dialog .msgprint {
+	color: var(--myrmex-text);
+	line-height: var(--myrmex-leading);
+}
+
+.myrmex-enabled .modal-header .indicator.red::before,
+.myrmex-enabled .modal-header .indicator.orange::before {
+	box-shadow: 0 0 0 4px var(--myrmex-error-soft);
+}
+
+/* Desk "Not found" / "Not permitted" pages. */
+.myrmex-enabled .page-card {
+	max-width: 440px;
+	margin: var(--myrmex-space-7) auto;
+	padding: var(--myrmex-space-6);
+	background-color: var(--myrmex-surface);
+	border: 1px solid var(--myrmex-border);
+	border-radius: var(--myrmex-card-radius);
+	box-shadow: var(--myrmex-shadow);
+	text-align: center;
+}
+
+.myrmex-enabled .page-card .page-card-head {
+	font-size: var(--myrmex-text-lg);
+	font-weight: var(--myrmex-weight-semibold);
+	color: var(--myrmex-text);
+}

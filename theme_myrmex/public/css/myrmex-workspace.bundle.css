@@ -1,0 +1,225 @@
+/* Workspaces (the dashboard). Widgets keep their native drag/drop and
+ * edit-mode behaviour; only their surface treatment changes.
+ *
+ * v15 widget classes: .widget + one of
+ *   .shortcut-widget-box  .links-widget-box  .number-widget-box
+ *   .dashboard-widget-box (charts)  .list-widget-box (quick lists)
+ *   .onboarding-widget-box  .block-widget-box
+ * Inside: .widget-head > .widget-label > .widget-title, .widget-control,
+ *         .widget-body, .widget-footer. */
+
+/* The workspace canvas: v15 draws it as a bordered card. Keep that, with the
+ * theme's radius, and give the page a little more air. */
+.myrmex-enabled [data-page-route="Workspaces"] .layout-main-section {
+	background-color: var(--myrmex-surface);
+	border: 1px solid var(--myrmex-border);
+	border-radius: var(--myrmex-card-radius);
+	padding: var(--myrmex-space-5);
+}
+
+.myrmex-enabled [data-page-route="Workspaces"] .layout-main-section.edit-mode {
+	background-color: var(--myrmex-surface-alt) !important;
+	border-style: dashed;
+	border-color: color-mix(in srgb, var(--myrmex-primary) 40%, var(--myrmex-border));
+}
+
+/* EditorJS paragraphs and headers written into a workspace. */
+.myrmex-enabled .codex-editor .ce-header {
+	color: var(--myrmex-text);
+	font-weight: var(--myrmex-weight-bold);
+	letter-spacing: var(--myrmex-tracking-tight);
+	padding-top: var(--myrmex-space-2);
+}
+
+.myrmex-enabled .ce-block__content,
+.myrmex-enabled .codex-editor__redactor {
+	color: var(--myrmex-text);
+}
+
+/* Widgets ------------------------------------------------------------------ */
+
+.myrmex-enabled .layout-main-section .widget {
+	background-color: var(--myrmex-surface);
+	border: 1px solid var(--myrmex-border);
+	border-radius: var(--myrmex-card-radius);
+	padding: var(--myrmex-card-padding);
+	box-shadow: var(--myrmex-shadow);
+	transition: box-shadow var(--myrmex-transition), border-color var(--myrmex-transition),
+		transform var(--myrmex-transition);
+}
+
+.myrmex-enabled .widget .widget-head {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: var(--myrmex-space-2);
+	margin-bottom: var(--myrmex-space-3);
+	padding-bottom: 0;
+	border-bottom: none;
+}
+
+.myrmex-enabled .widget .widget-title {
+	font-size: var(--myrmex-text-md);
+	font-weight: var(--myrmex-weight-semibold);
+	color: var(--myrmex-text);
+}
+
+.myrmex-enabled .widget .widget-subtitle {
+	font-size: var(--myrmex-text-sm);
+	color: var(--myrmex-muted);
+}
+
+.myrmex-enabled .widget .widget-control .btn {
+	border-radius: var(--myrmex-radius-sm);
+	color: var(--myrmex-muted);
+}
+
+.myrmex-enabled .widget .widget-footer {
+	border-top: 1px solid var(--myrmex-border);
+	margin-top: var(--myrmex-space-3);
+	padding-top: var(--myrmex-space-3);
+}
+
+/* Shortcut tiles are the primary click target, so they respond. */
+.myrmex-enabled .shortcut-widget-box {
+	cursor: pointer;
+}
+
+.myrmex-enabled .shortcut-widget-box .widget-head {
+	align-items: center;
+	margin-bottom: 0;
+}
+
+.myrmex-enabled .shortcut-widget-box:hover {
+	transform: translateY(-2px);
+	box-shadow: var(--myrmex-shadow-hover);
+	border-color: color-mix(in srgb, var(--myrmex-primary) 35%, var(--myrmex-border));
+}
+
+.myrmex-enabled .shortcut-widget-box:hover .widget-title {
+	color: var(--myrmex-primary);
+}
+
+.myrmex-enabled .shortcut-widget-box .indicator-pill {
+	background-color: var(--myrmex-primary-soft);
+	color: var(--myrmex-primary);
+}
+
+/* Number cards: the figure is the content. */
+.myrmex-enabled .number-widget-box .widget-head .widget-title {
+	color: var(--myrmex-muted);
+	font-size: var(--myrmex-text-base);
+	font-weight: var(--myrmex-weight-medium);
+}
+
+.myrmex-enabled .number-widget-box .widget-content .number {
+	font-size: var(--myrmex-text-display);
+	font-weight: var(--myrmex-weight-bold);
+	letter-spacing: -0.02em;
+	line-height: 1.15;
+	color: var(--myrmex-text);
+	font-variant-numeric: tabular-nums;
+}
+
+.myrmex-enabled .number-widget-box .card-stats {
+	margin-top: var(--myrmex-space-1);
+	font-size: var(--myrmex-text-sm);
+	color: var(--myrmex-muted);
+}
+
+.myrmex-enabled .number-widget-box .percentage-stat-area {
+	display: inline-flex;
+	align-items: center;
+	gap: 2px;
+	padding: 1px 6px;
+	border-radius: var(--myrmex-radius-pill);
+	font-weight: var(--myrmex-weight-semibold);
+}
+
+.myrmex-enabled .number-widget-box .percentage-stat-area:has(.green) {
+	background-color: var(--myrmex-success-soft);
+	color: var(--myrmex-success-text);
+}
+
+.myrmex-enabled .number-widget-box .percentage-stat-area:has(.red) {
+	background-color: var(--myrmex-error-soft);
+	color: var(--myrmex-error-text);
+}
+
+.myrmex-enabled .number-widget-box .number-card-loading {
+	color: var(--myrmex-muted);
+}
+
+/* Link cards. */
+.myrmex-enabled .links-widget-box .link-item {
+	display: flex;
+	align-items: center;
+	gap: var(--myrmex-space-2);
+	border-radius: var(--myrmex-radius-sm);
+	padding: 6px var(--myrmex-space-2);
+	margin-inline: calc(var(--myrmex-space-2) * -1);
+	color: var(--myrmex-text);
+	transition: background-color var(--myrmex-transition), color var(--myrmex-transition);
+}
+
+.myrmex-enabled .links-widget-box .link-item:hover {
+	background-color: var(--myrmex-primary-soft);
+	color: var(--myrmex-primary);
+	text-decoration: none;
+}
+
+.myrmex-enabled .links-widget-box .link-item .indicator-pill {
+	margin-inline-start: auto;
+}
+
+.myrmex-enabled .links-widget-box .link-item.disabled-link {
+	color: var(--myrmex-muted);
+}
+
+/* Quick lists (recent items) and charts. */
+.myrmex-enabled .list-widget-box .list-item {
+	border-radius: var(--myrmex-radius-sm);
+	transition: background-color var(--myrmex-transition);
+}
+
+.myrmex-enabled .list-widget-box .list-item:hover {
+	background-color: var(--myrmex-surface-alt);
+}
+
+.myrmex-enabled .list-widget-box .list-item + .list-item {
+	border-top: 1px solid var(--myrmex-border);
+}
+
+.myrmex-enabled .dashboard-widget-box .chart-actions .btn {
+	border-radius: var(--myrmex-radius-sm);
+}
+
+.myrmex-enabled .frappe-chart .title,
+.myrmex-enabled .frappe-chart .chart-label,
+.myrmex-enabled .frappe-chart text {
+	fill: var(--myrmex-muted);
+}
+
+.myrmex-enabled .frappe-chart .chart-legend text {
+	fill: var(--myrmex-text);
+}
+
+.myrmex-enabled .frappe-chart .axis line,
+.myrmex-enabled .frappe-chart .y-markers line {
+	stroke: var(--myrmex-border);
+}
+
+/* Onboarding is an invitation to act. */
+.myrmex-enabled .onboarding-widget-box {
+	border-color: color-mix(in srgb, var(--myrmex-primary) 25%, var(--myrmex-border));
+	background-color: color-mix(in srgb, var(--myrmex-primary) 4%, var(--myrmex-surface));
+}
+
+/* Section headings between widget groups. */
+.myrmex-enabled .layout-main-section .widget-group-title,
+.myrmex-enabled .layout-main-section .widget-group-head {
+	font-size: var(--myrmex-text-md);
+	font-weight: var(--myrmex-weight-semibold);
+	color: var(--myrmex-text);
+	margin-bottom: var(--myrmex-space-3);
+}

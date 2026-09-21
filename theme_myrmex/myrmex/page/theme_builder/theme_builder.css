@@ -1,0 +1,397 @@
+/* Theme Builder layout. Two columns: controls on the left, a live sample on the
+ * right that is styled by the same variables as the rest of the Desk. */
+
+.myrmex-builder {
+	display: grid;
+	grid-template-columns: minmax(320px, 420px) 1fr;
+	gap: var(--myrmex-space-5, 24px);
+	align-items: start;
+	padding-bottom: 48px;
+}
+
+.myrmex-builder__panel {
+	background-color: var(--myrmex-surface, #fff);
+	border: 1px solid var(--myrmex-border, #e5e7eb);
+	border-radius: var(--myrmex-card-radius, 14px);
+	padding: var(--myrmex-card-padding, 20px);
+	box-shadow: var(--myrmex-shadow, none);
+}
+
+.myrmex-builder__tabs {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px;
+	margin-bottom: 16px;
+}
+
+.myrmex-builder__tab {
+	border: 1px solid transparent;
+	background: transparent;
+	border-radius: 999px;
+	padding: 6px 12px;
+	font-size: 13px;
+	font-weight: 500;
+	color: var(--myrmex-muted, #6b7280);
+	cursor: pointer;
+	transition: background-color 150ms ease, color 150ms ease;
+}
+
+.myrmex-builder__tab:hover {
+	background-color: var(--myrmex-sidebar-hover, #f1f5f9);
+	color: var(--myrmex-text, #111827);
+}
+
+.myrmex-builder__tab[aria-selected="true"] {
+	background-color: var(--myrmex-primary-soft, rgba(29, 161, 242, 0.1));
+	color: var(--myrmex-primary, #1da1f2);
+}
+
+.myrmex-builder__group {
+	display: none;
+}
+
+.myrmex-builder__group.is-active {
+	display: block;
+}
+
+.myrmex-builder__field {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	padding: 9px 0;
+	border-bottom: 1px solid var(--myrmex-border, #e5e7eb);
+}
+
+.myrmex-builder__field:last-child {
+	border-bottom: none;
+}
+
+.myrmex-builder__field label {
+	font-size: 13px;
+	font-weight: 500;
+	color: var(--myrmex-text, #111827);
+	margin: 0;
+}
+
+.myrmex-builder__control {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.myrmex-builder__swatch {
+	width: 30px;
+	height: 30px;
+	padding: 0;
+	border: 1px solid var(--myrmex-border, #e5e7eb);
+	border-radius: 8px;
+	background: none;
+	cursor: pointer;
+}
+
+.myrmex-builder__hex {
+	width: 96px;
+	font-family: var(--font-stack-mono, monospace);
+	font-size: 12px;
+	text-transform: uppercase;
+}
+
+.myrmex-builder__number {
+	width: 96px;
+}
+
+.myrmex-builder__actions {
+	display: flex;
+	gap: 8px;
+	margin-top: 20px;
+	padding-top: 16px;
+	border-top: 1px solid var(--myrmex-border, #e5e7eb);
+}
+
+.myrmex-builder__hint {
+	font-size: 12px;
+	color: var(--myrmex-muted, #6b7280);
+	margin: 0 0 14px;
+}
+
+/* Preview ----------------------------------------------------------------- */
+
+.myrmex-preview {
+	position: sticky;
+	top: 16px;
+	border: 1px solid var(--myrmex-border, #e5e7eb);
+	border-radius: var(--myrmex-card-radius, 14px);
+	overflow: hidden;
+	background-color: var(--myrmex-background, #f7f7f9);
+}
+
+.myrmex-preview__bar {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	height: 48px;
+	padding: 0 14px;
+	background-color: var(--myrmex-navbar-background, #fff);
+	border-bottom: 1px solid var(--myrmex-navbar-border, #e5e7eb);
+	color: var(--myrmex-navbar-text, #111827);
+	font-weight: 600;
+}
+
+.myrmex-preview__search {
+	flex: 1;
+	height: 30px;
+	border-radius: var(--myrmex-input-radius, 8px);
+	background-color: var(--myrmex-navbar-search-background, #f3f4f6);
+}
+
+.myrmex-preview__body {
+	display: grid;
+	grid-template-columns: 180px 1fr;
+	min-height: 320px;
+}
+
+.myrmex-preview__rail {
+	background-color: var(--myrmex-sidebar-background, #fff);
+	border-right: 1px solid var(--myrmex-border, #e5e7eb);
+	padding: 12px 8px;
+}
+
+.myrmex-preview__item {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	height: 34px;
+	padding: 0 10px;
+	margin-bottom: 4px;
+	border-radius: var(--myrmex-radius-md, 10px);
+	color: var(--myrmex-sidebar-text, #111827);
+	font-size: 13px;
+}
+
+.myrmex-preview__item .dot {
+	width: 8px;
+	height: 8px;
+	border-radius: 999px;
+	background-color: var(--myrmex-sidebar-icon, #6b7280);
+}
+
+.myrmex-preview__item.is-active {
+	background-color: var(--myrmex-primary-soft, rgba(29, 161, 242, 0.1));
+	color: var(--myrmex-sidebar-active, #1da1f2);
+	font-weight: 600;
+}
+
+.myrmex-preview__item.is-active .dot {
+	background-color: var(--myrmex-sidebar-active, #1da1f2);
+}
+
+.myrmex-preview__main {
+	padding: 16px;
+	display: grid;
+	gap: 12px;
+	grid-template-columns: repeat(3, 1fr);
+	align-content: start;
+}
+
+.myrmex-preview__card {
+	background-color: var(--myrmex-surface, #fff);
+	border: 1px solid var(--myrmex-border, #e5e7eb);
+	border-radius: var(--myrmex-card-radius, 14px);
+	padding: calc(var(--myrmex-card-padding, 20px) * 0.7);
+	box-shadow: var(--myrmex-shadow, none);
+}
+
+.myrmex-preview__card .label {
+	font-size: 12px;
+	color: var(--myrmex-muted, #6b7280);
+}
+
+.myrmex-preview__card .value {
+	font-size: 22px;
+	font-weight: 650;
+	color: var(--myrmex-text, #111827);
+}
+
+.myrmex-preview__row {
+	grid-column: 1 / -1;
+	display: flex;
+	gap: 8px;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.myrmex-preview__btn {
+	border: 1px solid transparent;
+	border-radius: var(--myrmex-button-radius, 8px);
+	padding: 7px 14px;
+	font-size: 13px;
+	font-weight: 500;
+	cursor: default;
+}
+
+.myrmex-preview__btn.primary {
+	background-color: var(--myrmex-primary, #1da1f2);
+	color: var(--myrmex-primary-contrast, #fff);
+}
+
+.myrmex-preview__btn.secondary {
+	background-color: var(--myrmex-surface, #fff);
+	border-color: var(--myrmex-border, #e5e7eb);
+	color: var(--myrmex-text, #111827);
+}
+
+.myrmex-preview__btn.success {
+	background-color: var(--myrmex-success, #22c55e);
+	color: #fff;
+}
+
+.myrmex-preview__btn.danger {
+	background-color: var(--myrmex-error, #ef4444);
+	color: #fff;
+}
+
+.myrmex-preview__input {
+	height: 34px;
+	flex: 1;
+	min-width: 160px;
+	border: 1px solid var(--myrmex-border, #e5e7eb);
+	border-radius: var(--myrmex-input-radius, 8px);
+	background-color: var(--myrmex-surface, #fff);
+}
+
+/* Preview: table -----------------------------------------------------------
+ * Mirrors what the Table Styles tab controls, using the same tokens the Desk
+ * uses, so the preview and the real thing cannot drift apart. The "hover" row
+ * is painted permanently, since a preview cannot be hovered meaningfully. */
+
+.myrmex-preview__table {
+	grid-column: 1 / -1;
+	border: 1px solid var(--myrmex-table-border, #e5e7eb);
+	border-radius: var(--myrmex-table-radius, 10px);
+	overflow: hidden;
+	background-color: var(--myrmex-table-row-bg, #fff);
+	font-size: 12px;
+}
+
+.myrmex-preview__thead,
+.myrmex-preview__trow {
+	display: grid;
+	grid-template-columns: 1.4fr 1fr 0.8fr;
+	align-items: center;
+	gap: 8px;
+	padding-inline: var(--myrmex-table-cell-padding, 16px);
+	min-height: var(--myrmex-table-row-height, 42px);
+}
+
+.myrmex-preview__thead {
+	background-color: var(--myrmex-table-header-bg, #fbfbfc);
+	color: var(--myrmex-table-header-text, #6b7280);
+	font-weight: var(--myrmex-table-header-weight, 600);
+	text-transform: var(--myrmex-table-header-transform, none);
+	letter-spacing: var(--myrmex-table-header-tracking, 0);
+	border-bottom: var(--myrmex-table-row-border-width, 1px) solid var(--myrmex-table-border, #e5e7eb);
+	min-height: calc(var(--myrmex-table-row-height, 42px) - 4px);
+}
+
+.myrmex-preview__trow {
+	color: var(--myrmex-table-row-text, #111827);
+	border-bottom: var(--myrmex-table-row-border-width, 1px) solid var(--myrmex-table-border, #e5e7eb);
+}
+
+.myrmex-preview__thead span + span,
+.myrmex-preview__trow span + span {
+	border-inline-start: var(--myrmex-table-cell-border-width, 0px) solid var(--myrmex-table-border, #e5e7eb);
+	padding-inline-start: calc(var(--myrmex-table-cell-border-width, 0px) * 8);
+}
+
+.myrmex-preview__trow .num {
+	text-align: end;
+	font-variant-numeric: tabular-nums;
+}
+
+.myrmex-preview.is-zebra .myrmex-preview__trow:nth-of-type(odd):not(.is-selected) {
+	background-color: var(--myrmex-table-stripe-bg, #f8f8fa);
+}
+
+.myrmex-preview__trow.is-selected {
+	background-color: var(--myrmex-table-selected-bg, #e8f5fe);
+	box-shadow: inset 3px 0 0 var(--myrmex-primary, #1da1f2);
+}
+
+[data-myrmex-table-hover="tint"] .myrmex-preview__trow.is-hover,
+[data-myrmex-table-hover="accent"] .myrmex-preview__trow.is-hover {
+	background-color: var(--myrmex-table-hover-bg, #f6f7f9);
+}
+
+[data-myrmex-table-hover="accent"] .myrmex-preview__trow.is-hover {
+	box-shadow: inset 3px 0 0 var(--myrmex-primary, #1da1f2);
+}
+
+.myrmex-preview__paging {
+	display: flex;
+	align-items: center;
+	justify-content: var(--myrmex-table-paging-justify, space-between);
+	gap: 6px;
+	padding: 8px var(--myrmex-table-cell-padding, 16px);
+	border-top: var(--myrmex-table-row-border-width, 1px) solid var(--myrmex-table-border, #e5e7eb);
+}
+
+.myrmex-preview__page {
+	border: 1px solid var(--myrmex-border, #e5e7eb);
+	background-color: var(--myrmex-surface, #fff);
+	color: var(--myrmex-muted, #6b7280);
+	padding: 3px 10px;
+	font-size: 11px;
+}
+
+[data-myrmex-table-paging="pills"] .myrmex-preview__page {
+	border-radius: 999px;
+}
+
+[data-myrmex-table-paging="buttons"] .myrmex-preview__page {
+	border-radius: var(--myrmex-button-radius, 8px);
+}
+
+[data-myrmex-table-paging="pills"] .myrmex-preview__page.is-active,
+[data-myrmex-table-paging="buttons"] .myrmex-preview__page.is-active {
+	background-color: var(--myrmex-primary-soft, rgba(29, 161, 242, 0.1));
+	border-color: transparent;
+	color: var(--myrmex-primary, #1da1f2);
+	font-weight: 600;
+}
+
+[data-myrmex-table-paging="minimal"] .myrmex-preview__page {
+	border-color: transparent;
+	background-color: transparent;
+	padding-inline: 6px;
+}
+
+[data-myrmex-table-paging="minimal"] .myrmex-preview__page.is-active {
+	color: var(--myrmex-text, #111827);
+	font-weight: 600;
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+/* Subheadings inside a settings group. */
+.myrmex-builder__subhead {
+	margin: 18px 0 6px;
+	font-size: 11px;
+	font-weight: 600;
+	color: var(--myrmex-muted, #6b7280);
+}
+
+.myrmex-builder__subhead:first-child {
+	margin-top: 0;
+}
+
+@media (max-width: 1100px) {
+	.myrmex-builder {
+		grid-template-columns: 1fr;
+	}
+
+	.myrmex-preview {
+		position: static;
+	}
+}

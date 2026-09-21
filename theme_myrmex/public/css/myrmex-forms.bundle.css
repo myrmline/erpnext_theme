@@ -1,0 +1,285 @@
+/* Form view: the form card, tabs, sections, fields, grids, sidebar, timeline.
+ *
+ * v15 draws a form as one card (.std-form-layout > .form-layout > .form-page)
+ * with sections separated by divider lines, and forces .form-section borders
+ * off with !important. The theme follows that structure rather than turning
+ * each section into its own card: one surface, clear section headings, more
+ * breathing room. Field rendering and behaviour stay Frappe's. */
+
+.myrmex-enabled .std-form-layout > .form-layout > .form-page {
+	background-color: var(--myrmex-surface);
+	border: 1px solid var(--myrmex-border);
+	border-radius: var(--myrmex-card-radius);
+	box-shadow: var(--myrmex-shadow);
+}
+
+/* Tabs ------------------------------------------------------------------- */
+
+/* With tabs, the tab bar is the top of the card and the page continues it. */
+.myrmex-enabled .form-tabs-list {
+	background-color: var(--myrmex-surface);
+	border: 1px solid var(--myrmex-border);
+	border-radius: var(--myrmex-card-radius) var(--myrmex-card-radius) 0 0;
+	padding-inline: var(--myrmex-space-2);
+}
+
+.myrmex-enabled .std-form-layout > .form-layout > .form-tabs-list:not(.hide) + .form-page {
+	border-top: none;
+	border-start-start-radius: 0;
+	border-start-end-radius: 0;
+}
+
+.myrmex-enabled .form-tabs-list.form-tabs-sticky-up,
+.myrmex-enabled .form-tabs-list.form-tabs-sticky-down {
+	border-radius: 0;
+	box-shadow: 0 6px 12px -10px rgba(16, 24, 40, 0.25);
+}
+
+.myrmex-enabled .form-tabs-list .form-tabs .nav-link {
+	margin: 0 var(--myrmex-space-3);
+	padding: 13px 0 11px;
+	background-color: transparent;
+	border-bottom: 2px solid transparent;
+	color: var(--myrmex-muted);
+	font-weight: var(--myrmex-weight-medium);
+	transition: color var(--myrmex-transition), border-color var(--myrmex-transition);
+}
+
+.myrmex-enabled .form-tabs-list .form-tabs .nav-link:hover {
+	color: var(--myrmex-text);
+}
+
+.myrmex-enabled .form-tabs-list .form-tabs .nav-link.active {
+	color: var(--myrmex-text);
+	font-weight: var(--myrmex-weight-semibold);
+	border-bottom-color: var(--myrmex-primary);
+}
+
+/* Sections --------------------------------------------------------------- */
+
+.myrmex-enabled .form-section.card-section,
+.myrmex-enabled .form-dashboard-section {
+	margin: 0;
+	padding: var(--myrmex-space-2) var(--myrmex-space-3);
+	border-bottom-color: var(--myrmex-border);
+}
+
+.myrmex-enabled .form-section .section-head {
+	display: flex;
+	align-items: center;
+	gap: var(--myrmex-space-2);
+	padding: var(--myrmex-space-3) var(--myrmex-space-3) 0;
+	margin: 0 0 var(--myrmex-space-2);
+	font-size: var(--myrmex-text-md);
+	font-weight: var(--myrmex-weight-semibold);
+	letter-spacing: -0.005em;
+	color: var(--myrmex-text);
+	border-bottom: none;
+}
+
+.myrmex-enabled .form-section .section-head.collapsible {
+	cursor: pointer;
+	border-radius: var(--myrmex-radius-sm);
+}
+
+.myrmex-enabled .form-section .section-head.collapsed {
+	padding-bottom: var(--myrmex-space-3);
+	margin-bottom: 0;
+	color: var(--myrmex-muted);
+}
+
+.myrmex-enabled .form-section .section-head.collapsed:hover {
+	color: var(--myrmex-text);
+}
+
+.myrmex-enabled .form-section .section-head .collapse-indicator {
+	margin-inline-start: auto;
+	color: var(--myrmex-muted);
+	transition: transform var(--myrmex-transition);
+}
+
+.myrmex-enabled .form-section .form-section-description {
+	color: var(--myrmex-muted);
+	font-size: var(--myrmex-text-sm);
+	margin-bottom: var(--myrmex-space-2);
+}
+
+.myrmex-enabled .form-section .section-body {
+	padding-top: 0;
+}
+
+.myrmex-enabled .form-column .frappe-control {
+	margin-bottom: var(--myrmex-space-4);
+}
+
+/* Title area and document status ------------------------------------------ */
+
+.myrmex-enabled .form-dashboard .form-dashboard-wrapper {
+	border-radius: var(--myrmex-radius-md);
+}
+
+.myrmex-enabled .form-dashboard .form-links .document-link {
+	border-radius: var(--myrmex-radius-sm);
+}
+
+.myrmex-enabled .form-dashboard .form-links .badge-link {
+	color: var(--myrmex-text);
+}
+
+.myrmex-enabled .form-dashboard .form-links .count {
+	background-color: var(--myrmex-primary-soft);
+	color: var(--myrmex-primary);
+	border-radius: var(--myrmex-radius-pill);
+	font-weight: var(--myrmex-weight-semibold);
+}
+
+/* Grids (child tables) ----------------------------------------------------
+ * Child tables follow Theme Builder → Table Styles, like every other table. */
+
+.myrmex-enabled .form-grid-container {
+	border-radius: var(--myrmex-table-radius);
+}
+
+.myrmex-enabled .form-grid {
+	border: 1px solid var(--myrmex-table-border);
+	border-radius: var(--myrmex-table-radius);
+	background-color: var(--myrmex-table-row-bg);
+}
+
+.myrmex-enabled .form-grid .grid-heading-row {
+	background-color: var(--myrmex-table-header-bg);
+	border-bottom: var(--myrmex-table-row-border-width) solid var(--myrmex-table-border);
+	border-radius: var(--myrmex-table-radius) var(--myrmex-table-radius) 0 0;
+	font-size: var(--myrmex-text-sm);
+	font-weight: var(--myrmex-table-header-weight);
+	text-transform: var(--myrmex-table-header-transform);
+	letter-spacing: var(--myrmex-table-header-tracking);
+	color: var(--myrmex-table-header-text);
+}
+
+.myrmex-enabled .form-grid .grid-row {
+	border-bottom: var(--myrmex-table-row-border-width) solid var(--myrmex-table-border);
+	color: var(--myrmex-table-row-text);
+	transition: background-color var(--myrmex-transition);
+}
+
+.myrmex-enabled .form-grid .grid-row > .row,
+.myrmex-enabled .form-grid .grid-heading-row > .row {
+	padding-inline: calc(var(--myrmex-table-cell-padding) / 2);
+}
+
+.myrmex-enabled .form-grid .grid-row .col {
+	border-inline-start: var(--myrmex-table-cell-border-width) solid var(--myrmex-table-border);
+}
+
+.myrmex-enabled .form-grid .grid-row .col:first-child {
+	border-inline-start: none;
+}
+
+.myrmex-enabled .form-grid .grid-body .grid-row:last-child {
+	border-bottom: none;
+}
+
+.myrmex-enabled[data-myrmex-table-hover="tint"] .form-grid .grid-body .grid-row:hover,
+.myrmex-enabled[data-myrmex-table-hover="accent"] .form-grid .grid-body .grid-row:hover {
+	background-color: var(--myrmex-table-hover-bg);
+}
+
+.myrmex-zebra.myrmex-enabled .form-grid .grid-body .grid-row:nth-child(even) {
+	background-color: var(--myrmex-table-stripe-bg);
+}
+
+.myrmex-enabled .form-grid .grid-row.grid-row-open {
+	background-color: var(--myrmex-table-selected-bg);
+}
+
+.myrmex-enabled .form-grid .grid-empty {
+	color: var(--myrmex-muted);
+}
+
+.myrmex-enabled .grid-footer {
+	padding-top: var(--myrmex-space-2);
+}
+
+.myrmex-enabled .grid-footer .btn {
+	border-radius: var(--myrmex-button-radius);
+}
+
+/* Form sidebar ------------------------------------------------------------ */
+
+.myrmex-enabled .form-sidebar .sidebar-section {
+	padding: var(--myrmex-space-3) 0;
+	border-bottom: 1px solid var(--myrmex-border);
+}
+
+.myrmex-enabled .form-sidebar .sidebar-section:last-child {
+	border-bottom: none;
+}
+
+.myrmex-enabled .form-sidebar .sidebar-label {
+	color: var(--myrmex-muted);
+	font-size: var(--myrmex-text-sm);
+	font-weight: var(--myrmex-weight-semibold);
+}
+
+.myrmex-enabled .form-sidebar .avatar-group .avatar {
+	box-shadow: 0 0 0 2px var(--myrmex-background);
+}
+
+.myrmex-enabled .form-sidebar .sidebar-image-section .sidebar-image,
+.myrmex-enabled .form-sidebar .sidebar-image-section .sidebar-standard-image {
+	border-radius: var(--myrmex-card-radius);
+}
+
+/* Comments, attachments, activity ---------------------------------------- */
+
+.myrmex-enabled .form-footer {
+	margin-top: var(--myrmex-space-5);
+}
+
+.myrmex-enabled .comment-box .comment-input-wrapper,
+.myrmex-enabled .new-timeline .timeline-item .timeline-content {
+	background-color: var(--myrmex-surface);
+	border: 1px solid var(--myrmex-border);
+	border-radius: var(--myrmex-radius-md);
+	box-shadow: none;
+}
+
+.myrmex-enabled .comment-box .ql-container,
+.myrmex-enabled .comment-box .ql-toolbar {
+	border-color: var(--myrmex-border);
+}
+
+.myrmex-enabled .new-timeline .timeline-dot {
+	background-color: var(--myrmex-surface);
+	border: 2px solid var(--myrmex-border);
+}
+
+.myrmex-enabled .new-timeline::before {
+	background-color: var(--myrmex-border);
+}
+
+.myrmex-enabled .timeline-actions .btn,
+.myrmex-enabled .comment-input-wrapper .btn {
+	border-radius: var(--myrmex-button-radius);
+}
+
+.myrmex-enabled .attachment-row {
+	border-radius: var(--myrmex-radius-sm);
+	transition: background-color var(--myrmex-transition);
+}
+
+.myrmex-enabled .attachment-row:hover {
+	background-color: var(--myrmex-surface-alt);
+}
+
+/* Form toolbar ------------------------------------------------------------ */
+
+.myrmex-enabled .page-actions .primary-action {
+	box-shadow: var(--myrmex-shadow);
+}
+
+.myrmex-enabled .indicator-pill.blue.myrmex-draft {
+	background-color: var(--myrmex-surface-alt);
+	color: var(--myrmex-muted);
+}

@@ -1,0 +1,68 @@
+/* Login and portal pages.
+ * Frappe renders these outside the Desk, so the palette arrives via
+ * myrmex-web.bundle.js rather than frappe.boot. Layout is left alone; only
+ * colour, radius and elevation are applied. */
+
+.myrmex-web body {
+	background-color: var(--myrmex-background);
+	color: var(--myrmex-text);
+}
+
+.myrmex-web .page_content .for-login,
+.myrmex-web .for-login,
+.myrmex-web .for-forgot,
+.myrmex-web .for-signup,
+.myrmex-web .login-content {
+	background-color: var(--myrmex-surface);
+	border: 1px solid var(--myrmex-border);
+	border-radius: var(--myrmex-card-radius);
+	box-shadow: var(--myrmex-shadow-lg);
+	padding: var(--myrmex-space-6);
+}
+
+.myrmex-web .login-content .page-card-head h4,
+.myrmex-web .for-login h4 {
+	font-weight: 650;
+	letter-spacing: -0.01em;
+	color: var(--myrmex-text);
+}
+
+.myrmex-web .form-control {
+	background-color: var(--myrmex-surface);
+	border: 1px solid var(--myrmex-border);
+	border-radius: var(--myrmex-input-radius);
+	color: var(--myrmex-text);
+	transition: border-color var(--myrmex-transition), box-shadow var(--myrmex-transition);
+}
+
+.myrmex-web .form-control:focus {
+	border-color: var(--myrmex-primary);
+	box-shadow: 0 0 0 3px var(--myrmex-primary-soft);
+	outline: none;
+}
+
+.myrmex-web .btn-primary,
+.myrmex-web .btn-login {
+	background-color: var(--myrmex-primary);
+	border-color: var(--myrmex-primary);
+	color: var(--myrmex-primary-contrast);
+	border-radius: var(--myrmex-button-radius);
+	font-weight: 550;
+	transition: background-color var(--myrmex-transition), box-shadow var(--myrmex-transition);
+}
+
+.myrmex-web .btn-primary:hover {
+	background-color: var(--myrmex-secondary);
+	border-color: var(--myrmex-secondary);
+	box-shadow: var(--myrmex-shadow-hover);
+}
+
+.myrmex-web .page-card-actions a,
+.myrmex-web .forgot-password-message a {
+	color: var(--myrmex-primary);
+}
+
+.myrmex-web .app-logo,
+.myrmex-web .navbar-brand img {
+	max-height: 32px;
+}

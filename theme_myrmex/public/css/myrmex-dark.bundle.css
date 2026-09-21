@@ -1,0 +1,104 @@
+/* Dark mode.
+ *
+ * Frappe v15 already sets data-theme="dark" on <html> through its own theme
+ * switcher, so Myrmex piggybacks on that attribute instead of introducing a
+ * competing toggle. The user menu keeps working exactly as before.
+ *
+ * The dark values themselves are written at runtime by myrmex-theme.js from the
+ * payload the server derives (accent colours carry over, surfaces are replaced).
+ * The rules below are the fallbacks plus the places that need more than a
+ * variable swap. */
+
+.myrmex-enabled[data-theme="dark"] {
+	--myrmex-background: #0f1117;
+	--myrmex-surface: #171a21;
+	--myrmex-surface-alt: #1c202a;
+	--myrmex-text: #e5e7eb;
+	--myrmex-muted: #9aa3b2;
+	--myrmex-border: #272d3a;
+	--myrmex-sidebar-background: #12151c;
+	--myrmex-sidebar-text: #d7dce5;
+	--myrmex-sidebar-hover: rgba(255, 255, 255, 0.06);
+	--myrmex-sidebar-icon: #9aa3b2;
+	--myrmex-navbar-background: #12151c;
+	--myrmex-navbar-text: #e5e7eb;
+	--myrmex-navbar-border: #272d3a;
+	--myrmex-navbar-search-background: #1c202a;
+	--myrmex-table-header-bg: #1c202a;
+	--myrmex-table-header-text: #9aa3b2;
+	--myrmex-table-row-bg: #171a21;
+	--myrmex-table-row-text: #e5e7eb;
+	--myrmex-table-stripe-bg: #1b2029;
+	--myrmex-table-hover-bg: #1f2430;
+	--myrmex-table-selected-bg: rgba(29, 161, 242, 0.22);
+	--myrmex-table-border: #272d3a;
+
+	/* On dark surfaces the status fills are bright enough to read as text,
+	 * and mixing them toward the (light) text colour would wash them out. */
+	--myrmex-success-text: color-mix(in srgb, var(--myrmex-success) 80%, #ffffff);
+	--myrmex-warning-text: color-mix(in srgb, var(--myrmex-warning) 80%, #ffffff);
+	--myrmex-error-text: color-mix(in srgb, var(--myrmex-error) 75%, #ffffff);
+	--myrmex-success-soft: color-mix(in srgb, var(--myrmex-success) 18%, transparent);
+	--myrmex-warning-soft: color-mix(in srgb, var(--myrmex-warning) 18%, transparent);
+	--myrmex-error-soft: color-mix(in srgb, var(--myrmex-error) 18%, transparent);
+
+	/* Shadows read as noise on dark surfaces; borders do the work instead. */
+	--myrmex-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+	--myrmex-shadow-hover: 0 6px 18px rgba(0, 0, 0, 0.5);
+	--myrmex-shadow-lg: 0 20px 48px rgba(0, 0, 0, 0.6);
+
+	color-scheme: dark;
+}
+
+.myrmex-enabled[data-theme="dark"] header.navbar.myrmex-scrolled,
+.myrmex-enabled[data-theme="dark"] .page-head.myrmex-stuck {
+	box-shadow: 0 1px 0 var(--myrmex-border);
+}
+
+.myrmex-enabled[data-theme="dark"] .modal-backdrop.show {
+	background-color: #000;
+	opacity: 0.6;
+}
+
+.myrmex-enabled[data-theme="dark"] .layout-side-section div.close-sidebar {
+	background-color: rgba(0, 0, 0, 0.65);
+}
+
+/* Images can be over-bright against a dark canvas. */
+.myrmex-enabled[data-theme="dark"] .widget img:not([src$=".svg"]),
+.myrmex-enabled[data-theme="dark"] .msg-box img:not([src$=".svg"]) {
+	filter: brightness(0.9);
+}
+
+/* Keep native icons legible without replacing the sprite. */
+.myrmex-enabled[data-theme="dark"] .sidebar-item-icon .icon,
+.myrmex-enabled[data-theme="dark"] .navbar .icon {
+	opacity: 0.92;
+}
+
+/* Frappe uses .text-muted widely; make sure it clears contrast in dark. */
+.myrmex-enabled[data-theme="dark"] .text-muted {
+	color: var(--myrmex-muted) !important;
+}
+
+.myrmex-enabled[data-theme="dark"] .form-control[disabled],
+.myrmex-enabled[data-theme="dark"] .form-control[readonly] {
+	background-color: var(--myrmex-surface-alt);
+}
+
+/* The tooltip inverts: light chip on the dark Desk. */
+.myrmex-enabled[data-theme="dark"] .myrmex-tooltip {
+	background-color: var(--myrmex-text);
+	color: var(--myrmex-background);
+}
+
+/* Code blocks in the assistant sit a step above the bubble. */
+.myrmex-enabled[data-theme="dark"] .myrmex-chat__bubble pre {
+	background-color: rgba(0, 0, 0, 0.3);
+}
+
+.myrmex-enabled[data-theme="dark"] .myrmex-skeleton,
+.myrmex-enabled[data-theme="dark"] .workspace-skeleton .skeleton-card,
+.myrmex-enabled[data-theme="dark"] .list-skeleton-box {
+	background-image: linear-gradient(100deg, transparent 20%, rgba(255, 255, 255, 0.05) 50%, transparent 80%);
+}

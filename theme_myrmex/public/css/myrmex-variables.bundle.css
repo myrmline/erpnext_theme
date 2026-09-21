@@ -1,0 +1,214 @@
+/* ---------------------------------------------------------------------------
+ * Tokens — loaded first by app_include_css, so every later bundle sees them.
+ * ---------------------------------------------------------------------------
+ * These are the fallback values. At runtime myrmex-theme.js writes a
+ * <style id="myrmex-theme-vars"> block with the values saved in Theme Settings,
+ * which lands after this file and therefore wins.
+ *
+ * Only colours, the sidebar/navbar sizes, the three radii, card padding and
+ * shadows are configurable. Everything else here is derived from those, so a
+ * preset with square corners or tight padding stays consistent everywhere.
+ *
+ * The second half of the file is the bridge: Frappe v15's own custom properties
+ * are re-pointed at the Myrmex tokens. That is what restyles the parts of the
+ * Desk this theme never names explicitly.
+ * ------------------------------------------------------------------------- */
+
+:root {
+	/* Brand ---------------------------------------------------------------- */
+	--myrmex-primary: #1da1f2;
+	--myrmex-secondary: #1426a9;
+	--myrmex-primary-soft: rgba(29, 161, 242, 0.1);
+	--myrmex-primary-contrast: #ffffff;
+
+	/* Surfaces ------------------------------------------------------------- */
+	--myrmex-background: #f7f7f9;
+	--myrmex-surface: #ffffff;
+	--myrmex-surface-alt: #fbfbfc;
+
+	/* Text ----------------------------------------------------------------- */
+	--myrmex-text: #111827;
+	--myrmex-muted: #6b7280;
+	--myrmex-border: #e5e7eb;
+	--myrmex-border-strong: color-mix(in srgb, var(--myrmex-border) 70%, var(--myrmex-muted));
+
+	/* Status --------------------------------------------------------------- */
+	--myrmex-success: #22c55e;
+	--myrmex-warning: #f59e0b;
+	--myrmex-error: #ef4444;
+	--myrmex-success-soft: color-mix(in srgb, var(--myrmex-success) 14%, transparent);
+	--myrmex-warning-soft: color-mix(in srgb, var(--myrmex-warning) 16%, transparent);
+	--myrmex-error-soft: color-mix(in srgb, var(--myrmex-error) 12%, transparent);
+	/* Status text needs more contrast than the fill colour on light surfaces. */
+	--myrmex-success-text: color-mix(in srgb, var(--myrmex-success) 70%, var(--myrmex-text));
+	--myrmex-warning-text: color-mix(in srgb, var(--myrmex-warning) 60%, var(--myrmex-text));
+	--myrmex-error-text: color-mix(in srgb, var(--myrmex-error) 80%, var(--myrmex-text));
+
+	/* Sidebar -------------------------------------------------------------- */
+	--myrmex-sidebar-background: #ffffff;
+	--myrmex-sidebar-text: #111827;
+	--myrmex-sidebar-active: #1da1f2;
+	--myrmex-sidebar-hover: #f1f5f9;
+	--myrmex-sidebar-icon: #6b7280;
+	--myrmex-sidebar-width: 260px;
+	--myrmex-sidebar-rail-width: 72px;
+
+	/* Navbar --------------------------------------------------------------- */
+	--myrmex-navbar-background: #ffffff;
+	--myrmex-navbar-text: #111827;
+	--myrmex-navbar-border: #e5e7eb;
+	--myrmex-navbar-search-background: #f3f4f6;
+	--myrmex-navbar-height: 60px;
+
+	/* Shape ----------------------------------------------------------------
+	 * The small radii never exceed the configured card radius, so the Minimal
+	 * preset (8px) and a square theme (0px) stay coherent. */
+	--myrmex-card-radius: 14px;
+	--myrmex-button-radius: 8px;
+	--myrmex-input-radius: 8px;
+	--myrmex-card-padding: 20px;
+	--myrmex-radius-xs: min(4px, var(--myrmex-card-radius));
+	--myrmex-radius-sm: min(6px, var(--myrmex-card-radius));
+	--myrmex-radius-md: min(10px, var(--myrmex-card-radius));
+	--myrmex-radius-lg: var(--myrmex-card-radius);
+	--myrmex-radius-pill: 999px;
+
+	/* Elevation ------------------------------------------------------------ */
+	--myrmex-shadow: 0 1px 3px rgba(16, 24, 40, 0.08), 0 1px 2px rgba(16, 24, 40, 0.04);
+	--myrmex-shadow-hover: 0 6px 16px rgba(16, 24, 40, 0.12);
+	--myrmex-shadow-lg: 0 16px 40px rgba(16, 24, 40, 0.16);
+	--myrmex-focus-ring: 0 0 0 3px var(--myrmex-primary-soft);
+
+	/* Type -----------------------------------------------------------------
+	 * Frappe v15 sets Inter; the theme keeps it and only fixes the scale. */
+	--myrmex-text-xs: 11px;
+	--myrmex-text-sm: 12px;
+	--myrmex-text-base: 13px;
+	--myrmex-text-md: 14px;
+	--myrmex-text-lg: 16px;
+	--myrmex-text-xl: 20px;
+	--myrmex-text-2xl: 24px;
+	--myrmex-text-display: 30px;
+	--myrmex-weight-regular: 420;
+	--myrmex-weight-medium: 500;
+	--myrmex-weight-semibold: 600;
+	--myrmex-weight-bold: 650;
+	--myrmex-leading-tight: 1.25;
+	--myrmex-leading: 1.5;
+	--myrmex-tracking-tight: -0.015em;
+
+	/* Tables ---------------------------------------------------------------
+	 * Configurable from Theme Builder → Table Styles. These fallbacks match
+	 * the shipped defaults, so tables look right before anything is saved.
+	 * Row height is its own token rather than --myrmex-row-height, so an
+	 * explicit table setting is not overridden by the density preset. */
+	--myrmex-table-header-bg: #fbfbfc;
+	--myrmex-table-header-text: #6b7280;
+	--myrmex-table-header-weight: 600;
+	--myrmex-table-header-transform: none;
+	--myrmex-table-header-tracking: 0;
+	--myrmex-table-row-bg: #ffffff;
+	--myrmex-table-row-text: #111827;
+	--myrmex-table-stripe-bg: #f8f8fa;
+	--myrmex-table-hover-bg: #f6f7f9;
+	--myrmex-table-selected-bg: #e8f5fe;
+	--myrmex-table-border: #e5e7eb;
+	--myrmex-table-row-border-width: 1px;
+	--myrmex-table-cell-border-width: 0px;
+	--myrmex-table-radius: 10px;
+	--myrmex-table-row-height: 42px;
+	--myrmex-table-cell-padding: 16px;
+	--myrmex-table-paging-justify: space-between;
+
+	/* Rhythm --------------------------------------------------------------- */
+	--myrmex-space-1: 4px;
+	--myrmex-space-2: 8px;
+	--myrmex-space-3: 12px;
+	--myrmex-space-4: 16px;
+	--myrmex-space-5: 24px;
+	--myrmex-space-6: 32px;
+	--myrmex-space-7: 48px;
+	--myrmex-row-height: 42px;
+	--myrmex-control-height: 34px;
+	--myrmex-touch-target: 44px;
+
+	/* Layers ---------------------------------------------------------------
+	 * Bootstrap modals sit at 1040 (backdrop) / 1050 (dialog). The assistant
+	 * stays under them so Frappe dialogs always cover it. */
+	--myrmex-z-sticky: 1020;
+	--myrmex-z-chat: 1035;
+	--myrmex-z-tooltip: 1080;
+
+	/* Motion ---------------------------------------------------------------
+	 * --myrmex-transition becomes "0ms linear" when transitions are turned off
+	 * in Theme Settings; every transition in the theme goes through it. */
+	--myrmex-transition: 150ms ease;
+	--myrmex-transition-slow: 220ms var(--myrmex-ease);
+	--myrmex-ease: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+/* Compact density: the same layout on a tighter vertical rhythm. */
+:root[data-myrmex-density="compact"] {
+	--myrmex-card-padding: 14px;
+	--myrmex-space-5: 18px;
+	--myrmex-space-6: 24px;
+	--myrmex-row-height: 36px;
+	--myrmex-control-height: 30px;
+}
+
+/* ---------------------------------------------------------------------------
+ * Bridge to Frappe v15 variables
+ * ---------------------------------------------------------------------------
+ * Frappe declares these in its own stylesheet; re-declaring them here overrides
+ * the value, not the definition, so no core file is touched and every core
+ * component that reads them updates with the palette. */
+
+.myrmex-enabled {
+	--primary: var(--myrmex-primary);
+	--primary-color: var(--myrmex-primary);
+	--text-on-primary: var(--myrmex-primary-contrast);
+	--btn-primary: var(--myrmex-primary);
+
+	--bg-color: var(--myrmex-background);
+	--fg-color: var(--myrmex-surface);
+	--card-bg: var(--myrmex-surface);
+	--subtle-fg: var(--myrmex-surface-alt);
+	--subtle-accent: var(--myrmex-surface-alt);
+	--control-bg: var(--myrmex-surface);
+	--control-bg-on-gray: var(--myrmex-surface-alt);
+	--disabled-control-bg: var(--myrmex-surface-alt);
+	--modal-bg: var(--myrmex-surface);
+	--popover-bg: var(--myrmex-surface);
+	--toast-bg: var(--myrmex-surface);
+	--awesomplete-hover-bg: var(--myrmex-primary-soft);
+	--skeleton-bg: color-mix(in srgb, var(--myrmex-border) 60%, var(--myrmex-surface));
+
+	--text-color: var(--myrmex-text);
+	--heading-color: var(--myrmex-text);
+	--text-muted: var(--myrmex-muted);
+	--text-light: var(--myrmex-muted);
+	--invert-neutral: var(--myrmex-text);
+
+	--border-color: var(--myrmex-border);
+	--dark-border-color: var(--myrmex-border-strong);
+
+	--green-avatar-color: var(--myrmex-success);
+	--alert-text-danger: var(--myrmex-error-text);
+	--alert-text-warning: var(--myrmex-warning-text);
+	--alert-text-success: var(--myrmex-success-text);
+
+	--border-radius: var(--myrmex-radius-sm);
+	--border-radius-sm: var(--myrmex-radius-sm);
+	--border-radius-md: var(--myrmex-radius-md);
+	--border-radius-lg: var(--myrmex-radius-lg);
+	--border-radius-full: var(--myrmex-radius-pill);
+
+	--shadow-base: var(--myrmex-shadow);
+	--shadow-sm: var(--myrmex-shadow);
+	--shadow-md: var(--myrmex-shadow-hover);
+	--shadow-lg: var(--myrmex-shadow-lg);
+	--focus-default: var(--myrmex-focus-ring);
+
+	--navbar-height: var(--myrmex-navbar-height);
+	--table-border-color: var(--myrmex-table-border);
+}

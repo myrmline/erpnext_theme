@@ -1,0 +1,469 @@
+{
+ "actions": [],
+ "creation": "2026-09-17 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "general_section",
+  "enabled",
+  "bot_name",
+  "welcome_message",
+  "general_col_1",
+  "avatar",
+  "position",
+  "default_language",
+  "access_section",
+  "allowed_roles",
+  "appearance_section",
+  "primary_color",
+  "chat_background",
+  "appearance_col_1",
+  "user_message_color",
+  "assistant_message_color",
+  "appearance_col_2",
+  "border_radius",
+  "panel_width",
+  "panel_height",
+  "behavior_section",
+  "auto_open",
+  "open_after_login",
+  "show_typing_indicator",
+  "show_suggestions",
+  "behavior_col_1",
+  "page_visibility",
+  "page_patterns",
+  "suggestions_section",
+  "suggestions",
+  "history_section",
+  "enable_history",
+  "max_history_messages",
+  "history_col_1",
+  "max_conversations",
+  "max_messages_per_conversation",
+  "retention_days",
+  "context_section",
+  "share_page_context",
+  "share_document_context",
+  "share_recent_activity",
+  "share_open_tasks",
+  "context_col_1",
+  "max_context_fields",
+  "excluded_doctypes",
+  "ai_section",
+  "ai_provider",
+  "api_endpoint",
+  "api_key",
+  "ai_col_1",
+  "model",
+  "temperature",
+  "max_tokens",
+  "request_timeout",
+  "prompt_section",
+  "system_prompt",
+  "limits_section",
+  "max_message_length",
+  "limits_col_1",
+  "rate_limit_per_minute",
+  "rate_limit_per_day"
+ ],
+ "fields": [
+  {
+   "fieldname": "general_section",
+   "fieldtype": "Section Break",
+   "label": "General"
+  },
+  {
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enable assistant",
+   "default": "0",
+   "description": "Turn on after the AI provider below is configured and tested."
+  },
+  {
+   "fieldname": "bot_name",
+   "fieldtype": "Data",
+   "label": "Assistant name",
+   "default": "Myrmex Assistant"
+  },
+  {
+   "fieldname": "welcome_message",
+   "fieldtype": "Small Text",
+   "label": "Welcome message",
+   "description": "Shown when a conversation starts. Leave empty for the built-in, translated greeting."
+  },
+  {
+   "fieldname": "general_col_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "avatar",
+   "fieldtype": "Attach Image",
+   "label": "Avatar",
+   "description": "Square image. Without one, the assistant uses the Myrmex mark with its initial."
+  },
+  {
+   "fieldname": "position",
+   "fieldtype": "Select",
+   "label": "Position",
+   "options": "Bottom right\nBottom left",
+   "default": "Bottom right"
+  },
+  {
+   "fieldname": "default_language",
+   "fieldtype": "Select",
+   "label": "Reply language",
+   "options": "User language\nEnglish\nFrench\nArabic",
+   "default": "User language",
+   "description": "User language follows each person's language setting in Frappe."
+  },
+  {
+   "fieldname": "access_section",
+   "fieldtype": "Section Break",
+   "label": "Access"
+  },
+  {
+   "fieldname": "allowed_roles",
+   "fieldtype": "Table",
+   "label": "Allowed roles",
+   "options": "Has Role",
+   "description": "Leave empty to allow every Desk user. Portal (website) users never see the assistant."
+  },
+  {
+   "fieldname": "appearance_section",
+   "fieldtype": "Section Break",
+   "label": "Appearance",
+   "collapsible": 1,
+   "description": "Leave a colour empty to follow the active Myrmex theme."
+  },
+  {
+   "fieldname": "primary_color",
+   "fieldtype": "Color",
+   "label": "Accent colour"
+  },
+  {
+   "fieldname": "chat_background",
+   "fieldtype": "Color",
+   "label": "Panel background"
+  },
+  {
+   "fieldname": "appearance_col_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "user_message_color",
+   "fieldtype": "Color",
+   "label": "Your message bubble"
+  },
+  {
+   "fieldname": "assistant_message_color",
+   "fieldtype": "Color",
+   "label": "Assistant message bubble"
+  },
+  {
+   "fieldname": "appearance_col_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "border_radius",
+   "fieldtype": "Int",
+   "label": "Corner radius (px)",
+   "default": "16",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "panel_width",
+   "fieldtype": "Int",
+   "label": "Panel width (px)",
+   "default": "400",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "panel_height",
+   "fieldtype": "Int",
+   "label": "Panel height (px)",
+   "default": "620",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "behavior_section",
+   "fieldtype": "Section Break",
+   "label": "Behaviour"
+  },
+  {
+   "fieldname": "auto_open",
+   "fieldtype": "Check",
+   "label": "Open automatically when the Desk loads",
+   "default": "0"
+  },
+  {
+   "fieldname": "open_after_login",
+   "fieldtype": "Check",
+   "label": "Open once right after login",
+   "default": "0"
+  },
+  {
+   "fieldname": "show_typing_indicator",
+   "fieldtype": "Check",
+   "label": "Show typing indicator",
+   "default": "1"
+  },
+  {
+   "fieldname": "show_suggestions",
+   "fieldtype": "Check",
+   "label": "Show suggested prompts",
+   "default": "1"
+  },
+  {
+   "fieldname": "behavior_col_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "page_visibility",
+   "fieldtype": "Select",
+   "label": "Show on pages",
+   "options": "Everywhere\nOnly on listed pages\nEverywhere except listed pages",
+   "default": "Everywhere"
+  },
+  {
+   "fieldname": "page_patterns",
+   "fieldtype": "Small Text",
+   "label": "Page patterns",
+   "depends_on": "eval:doc.page_visibility!==\"Everywhere\"",
+   "description": "One Desk route per line, * as wildcard. Examples: Form/Sales Order/*, List/*, Workspaces/Selling"
+  },
+  {
+   "fieldname": "suggestions_section",
+   "fieldtype": "Section Break",
+   "label": "Suggested prompts",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "suggestions",
+   "fieldtype": "Table",
+   "label": "Suggestions",
+   "options": "Chatbot Suggestion"
+  },
+  {
+   "fieldname": "history_section",
+   "fieldtype": "Section Break",
+   "label": "Conversation history"
+  },
+  {
+   "fieldname": "enable_history",
+   "fieldtype": "Check",
+   "label": "Keep conversation history",
+   "default": "1",
+   "description": "When off, nothing is stored on the server and conversations last only for the browser tab."
+  },
+  {
+   "fieldname": "max_history_messages",
+   "fieldtype": "Int",
+   "label": "Previous messages sent with each question",
+   "default": "20",
+   "non_negative": 1,
+   "description": "Between 0 and 50."
+  },
+  {
+   "fieldname": "history_col_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "max_conversations",
+   "fieldtype": "Int",
+   "label": "Conversations kept per user",
+   "default": "30",
+   "non_negative": 1,
+   "depends_on": "enable_history"
+  },
+  {
+   "fieldname": "max_messages_per_conversation",
+   "fieldtype": "Int",
+   "label": "Messages per conversation",
+   "default": "200",
+   "non_negative": 1,
+   "depends_on": "enable_history"
+  },
+  {
+   "fieldname": "retention_days",
+   "fieldtype": "Int",
+   "label": "Delete idle conversations after (days)",
+   "default": "90",
+   "non_negative": 1,
+   "depends_on": "enable_history",
+   "description": "0 keeps them until the user deletes them."
+  },
+  {
+   "fieldname": "context_section",
+   "fieldtype": "Section Break",
+   "label": "Application context",
+   "description": "What the assistant may read about the page a user is on. Everything is read with that user's permissions; restricted fields and records are left out."
+  },
+  {
+   "fieldname": "share_page_context",
+   "fieldtype": "Check",
+   "label": "Current page and module",
+   "default": "1"
+  },
+  {
+   "fieldname": "share_document_context",
+   "fieldtype": "Check",
+   "label": "Fields of the open document",
+   "default": "1"
+  },
+  {
+   "fieldname": "share_recent_activity",
+   "fieldtype": "Check",
+   "label": "User's recent changes in the current DocType",
+   "default": "1"
+  },
+  {
+   "fieldname": "share_open_tasks",
+   "fieldtype": "Check",
+   "label": "User's open assignments (ToDo)",
+   "default": "1"
+  },
+  {
+   "fieldname": "context_col_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "max_context_fields",
+   "fieldtype": "Int",
+   "label": "Maximum document fields",
+   "default": "40",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "excluded_doctypes",
+   "fieldtype": "Small Text",
+   "label": "Never share these DocTypes",
+   "description": "One DocType per line. User, credentials, logs and the assistant's own records are always excluded."
+  },
+  {
+   "fieldname": "ai_section",
+   "fieldtype": "Section Break",
+   "label": "AI provider"
+  },
+  {
+   "fieldname": "ai_provider",
+   "fieldtype": "Select",
+   "label": "Provider",
+   "options": "OpenAI Compatible\nAzure OpenAI\nAnthropic",
+   "default": "OpenAI Compatible",
+   "description": "OpenAI Compatible also covers Ollama, vLLM, LM Studio, Mistral, Groq and similar services."
+  },
+  {
+   "fieldname": "api_endpoint",
+   "fieldtype": "Data",
+   "label": "API endpoint",
+   "options": "URL",
+   "description": "Leave empty for the provider's default. Azure: the full chat/completions URL including api-version."
+  },
+  {
+   "fieldname": "api_key",
+   "fieldtype": "Password",
+   "label": "API key",
+   "length": 512,
+   "description": "Stored encrypted and only used on the server. It is never sent to browsers."
+  },
+  {
+   "fieldname": "ai_col_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "model",
+   "fieldtype": "Data",
+   "label": "Model",
+   "description": "The model or deployment name your provider expects."
+  },
+  {
+   "fieldname": "temperature",
+   "fieldtype": "Float",
+   "label": "Temperature",
+   "default": "0.3",
+   "precision": "2"
+  },
+  {
+   "fieldname": "max_tokens",
+   "fieldtype": "Int",
+   "label": "Maximum reply tokens",
+   "default": "800",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "request_timeout",
+   "fieldtype": "Int",
+   "label": "Request timeout (seconds)",
+   "default": "30",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "prompt_section",
+   "fieldtype": "Section Break",
+   "label": "Instructions"
+  },
+  {
+   "fieldname": "system_prompt",
+   "fieldtype": "Long Text",
+   "label": "System prompt",
+   "description": "Tone, scope and company-specific guidance. Safety and permission rules are always added after it and cannot be removed here."
+  },
+  {
+   "fieldname": "limits_section",
+   "fieldtype": "Section Break",
+   "label": "Limits"
+  },
+  {
+   "fieldname": "max_message_length",
+   "fieldtype": "Int",
+   "label": "Maximum message length (characters)",
+   "default": "2000",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "limits_col_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "rate_limit_per_minute",
+   "fieldtype": "Int",
+   "label": "Messages per user per minute",
+   "default": "10",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "rate_limit_per_day",
+   "fieldtype": "Int",
+   "label": "Messages per user per day",
+   "default": "200",
+   "non_negative": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-09-17 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Myrmex",
+ "name": "Chatbot Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 0,
+   "print": 0,
+   "read": 1,
+   "role": "System Manager",
+   "share": 0,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "issingle": 1,
+ "track_changes": 1,
+ "editable_grid": 1,
+ "quick_entry": 0,
+ "description": "Configuration for the Myrmex Assistant."
+}

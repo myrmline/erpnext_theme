@@ -1,0 +1,5 @@
+[pre_model_sync]
+
+[post_model_sync]
+theme_myrmex.patches.v1_0.set_default_theme
+theme_myrmex.patches.v1_1.seed_chatbot_settings

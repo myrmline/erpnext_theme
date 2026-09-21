@@ -1,0 +1,355 @@
+/* Sidebar: expanded panel, collapsed rail, and the mobile drawer.
+ *
+ * Frappe v15 markup (workspace pages):
+ *   [data-page-route="Workspaces"] .layout-main
+ *     > .layout-side-section (col-lg-2, its own scroll container on desktop)
+ *       > .list-sidebar.overlay-sidebar
+ *         > a.myrmex-sidebar-brand            (added by myrmex-sidebar.js)
+ *         > .desk-sidebar
+ *           > .standard-sidebar-section > button.standard-sidebar-label
+ *           > .sidebar-item-container > .desk-sidebar-item.standard-sidebar-item
+ *               > a.item-anchor > .sidebar-item-icon + .sidebar-item-label
+ *               > .sidebar-item-control
+ *           > .sidebar-child-item (nested workspaces)
+ *
+ * States, as classes on <html>:
+ *   (default)                   expanded
+ *   .myrmex-sidebar-collapsed   icon rail (desktop workspace pages only)
+ * Mobile uses Frappe's own drawer (.overlay-sidebar.opened + .close-sidebar),
+ * which is restyled at the bottom of this file. */
+
+/* Workspace sidebar panel (desktop) --------------------------------------- */
+
+@media (min-width: 992px) {
+	.myrmex-enabled [data-page-route="Workspaces"] .layout-side-section {
+		flex: 0 0 var(--myrmex-sidebar-width);
+		max-width: var(--myrmex-sidebar-width);
+		padding: var(--myrmex-space-2);
+		margin-inline-end: var(--myrmex-space-4);
+		margin-bottom: var(--myrmex-space-2);
+		background-color: var(--myrmex-sidebar-background);
+		border: 1px solid var(--myrmex-border);
+		border-radius: var(--myrmex-card-radius);
+		box-shadow: var(--myrmex-shadow);
+		overflow-x: hidden;
+		transition: flex-basis var(--myrmex-transition-slow), max-width var(--myrmex-transition-slow),
+			padding var(--myrmex-transition-slow);
+	}
+
+	.myrmex-enabled [data-page-route="Workspaces"] .layout-main-section {
+		box-shadow: var(--myrmex-shadow);
+	}
+}
+
+.myrmex-enabled .desk-sidebar {
+	color: var(--myrmex-sidebar-text);
+}
+
+/* Brand ------------------------------------------------------------------- */
+
+.myrmex-enabled .myrmex-sidebar-brand {
+	display: flex;
+	align-items: center;
+	gap: var(--myrmex-space-3);
+	height: 48px;
+	padding: 0 var(--myrmex-space-2);
+	margin-bottom: var(--myrmex-space-2);
+	border-radius: var(--myrmex-radius-md);
+	font-weight: var(--myrmex-weight-bold);
+	font-size: var(--myrmex-text-md);
+	letter-spacing: 0.01em;
+	color: var(--myrmex-sidebar-text);
+	white-space: nowrap;
+	overflow: hidden;
+	text-decoration: none;
+}
+
+.myrmex-enabled .myrmex-sidebar-brand:hover {
+	color: var(--myrmex-sidebar-text);
+	text-decoration: none;
+	background-color: var(--myrmex-sidebar-hover);
+}
+
+.myrmex-enabled .myrmex-sidebar-brand .myrmex-wordmark {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	transition: opacity var(--myrmex-transition);
+}
+
+/* Section headings (Public, Private, …). v15 upper-cases these; sentence case
+ * with weight reads calmer and keeps translations intact. */
+
+.myrmex-enabled .desk-sidebar .standard-sidebar-section {
+	margin-bottom: var(--myrmex-space-4);
+}
+
+.myrmex-enabled .desk-sidebar .standard-sidebar-label {
+	display: flex;
+	align-items: center;
+	gap: var(--myrmex-space-1);
+	width: 100%;
+	padding: var(--myrmex-space-2) var(--myrmex-space-2) var(--myrmex-space-1);
+	font-size: var(--myrmex-text-sm);
+	font-weight: var(--myrmex-weight-semibold);
+	text-transform: none;
+	letter-spacing: 0;
+	color: var(--myrmex-muted);
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.myrmex-enabled .desk-sidebar .standard-sidebar-label:hover {
+	color: var(--myrmex-text);
+}
+
+/* Items ------------------------------------------------------------------- */
+
+.myrmex-enabled .desk-sidebar .sidebar-item-container {
+	position: relative;
+}
+
+.myrmex-enabled .desk-sidebar .standard-sidebar-item {
+	position: relative;
+	display: flex;
+	align-items: center;
+	margin: 1px 0;
+	border-radius: var(--myrmex-radius-md);
+	color: var(--myrmex-sidebar-text);
+	background-color: transparent;
+	transition: background-color var(--myrmex-transition), color var(--myrmex-transition);
+}
+
+.myrmex-enabled .desk-sidebar .item-anchor {
+	display: flex;
+	align-items: center;
+	flex: 1 1 auto;
+	gap: var(--myrmex-space-3);
+	min-width: 0;
+	min-height: 36px;
+	padding: 0 var(--myrmex-space-2);
+	color: inherit;
+	font-size: var(--myrmex-text-base);
+	font-weight: var(--myrmex-weight-medium);
+	border-radius: inherit;
+	white-space: nowrap;
+	text-decoration: none;
+}
+
+.myrmex-enabled .desk-sidebar .sidebar-item-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex: 0 0 20px;
+	width: 20px;
+	height: 20px;
+	color: var(--myrmex-sidebar-icon);
+}
+
+.myrmex-enabled .desk-sidebar .sidebar-item-icon .icon {
+	--icon-stroke: currentColor;
+	width: 18px;
+	height: 18px;
+}
+
+.myrmex-enabled .desk-sidebar .sidebar-item-label {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	transition: opacity var(--myrmex-transition);
+}
+
+.myrmex-enabled .desk-sidebar .standard-sidebar-item:hover {
+	background-color: var(--myrmex-sidebar-hover);
+}
+
+.myrmex-enabled .desk-sidebar .standard-sidebar-item:hover .sidebar-item-icon {
+	color: var(--myrmex-sidebar-text);
+}
+
+.myrmex-enabled .desk-sidebar .standard-sidebar-item.selected {
+	background-color: var(--myrmex-primary-soft);
+	color: var(--myrmex-sidebar-active);
+}
+
+.myrmex-enabled .desk-sidebar .standard-sidebar-item.selected .item-anchor {
+	font-weight: var(--myrmex-weight-semibold);
+}
+
+.myrmex-enabled .desk-sidebar .standard-sidebar-item.selected .sidebar-item-icon {
+	color: var(--myrmex-sidebar-active);
+}
+
+/* Active marker on the inline-start edge. */
+.myrmex-enabled .desk-sidebar .standard-sidebar-item.selected::before {
+	content: "";
+	position: absolute;
+	inset-inline-start: 0;
+	top: 22%;
+	bottom: 22%;
+	width: 3px;
+	border-start-end-radius: 3px;
+	border-end-end-radius: 3px;
+	background-color: var(--myrmex-sidebar-active);
+}
+
+.myrmex-enabled .desk-sidebar .sidebar-item-control {
+	display: flex;
+	align-items: center;
+	padding-inline-end: var(--myrmex-space-1);
+}
+
+.myrmex-enabled .desk-sidebar .sidebar-item-control .drop-icon {
+	color: var(--myrmex-muted);
+	border-radius: var(--myrmex-radius-xs);
+	transition: transform var(--myrmex-transition), background-color var(--myrmex-transition);
+}
+
+.myrmex-enabled .desk-sidebar .sidebar-item-control .drop-icon:hover {
+	background-color: color-mix(in srgb, var(--myrmex-sidebar-hover) 60%, var(--myrmex-border));
+}
+
+/* Nested (child workspace) items: a guide line instead of deep padding. */
+.myrmex-enabled .desk-sidebar .sidebar-child-item {
+	position: relative;
+	margin-inline-start: 19px;
+	padding-inline-start: var(--myrmex-space-2);
+	border-inline-start: 1px solid var(--myrmex-border);
+}
+
+.myrmex-enabled .desk-sidebar .sidebar-child-item .item-anchor {
+	min-height: 32px;
+	font-weight: var(--myrmex-weight-regular);
+}
+
+.myrmex-enabled .desk-sidebar .sidebar-child-item .sidebar-item-icon {
+	flex-basis: 16px;
+	width: 16px;
+}
+
+/* Private workspaces use a coloured dot instead of an icon. */
+.myrmex-enabled .desk-sidebar .sidebar-item-icon .indicator::before {
+	margin: 0;
+}
+
+/* Collapsed rail (desktop, workspace pages) -------------------------------- */
+
+@media (min-width: 992px) {
+	.myrmex-sidebar-collapsed.myrmex-enabled [data-page-route="Workspaces"] .layout-side-section {
+		flex-basis: var(--myrmex-sidebar-rail-width);
+		max-width: var(--myrmex-sidebar-rail-width);
+		padding-inline: var(--myrmex-space-2);
+	}
+
+	.myrmex-sidebar-collapsed.myrmex-enabled [data-page-route="Workspaces"] .sidebar-item-label,
+	.myrmex-sidebar-collapsed.myrmex-enabled [data-page-route="Workspaces"] .myrmex-wordmark,
+	.myrmex-sidebar-collapsed.myrmex-enabled [data-page-route="Workspaces"] .sidebar-item-control,
+	.myrmex-sidebar-collapsed.myrmex-enabled [data-page-route="Workspaces"] .standard-sidebar-label span {
+		opacity: 0;
+		width: 0;
+		overflow: hidden;
+		pointer-events: none;
+		position: absolute;
+	}
+
+	/* Section headings become a thin divider in the rail. */
+	.myrmex-sidebar-collapsed.myrmex-enabled [data-page-route="Workspaces"] .standard-sidebar-label {
+		width: auto;
+		height: 1px;
+		padding: 0;
+		margin: var(--myrmex-space-2) var(--myrmex-space-2);
+		background-color: var(--myrmex-border);
+		font-size: 0;
+		pointer-events: none;
+	}
+
+	.myrmex-sidebar-collapsed.myrmex-enabled [data-page-route="Workspaces"] .standard-sidebar-label .icon {
+		display: none;
+	}
+
+	.myrmex-sidebar-collapsed.myrmex-enabled [data-page-route="Workspaces"] .item-anchor,
+	.myrmex-sidebar-collapsed.myrmex-enabled [data-page-route="Workspaces"] .myrmex-sidebar-brand {
+		justify-content: center;
+		padding: 0;
+	}
+
+	.myrmex-sidebar-collapsed.myrmex-enabled [data-page-route="Workspaces"] .item-anchor {
+		min-height: 40px;
+	}
+
+	/* Child workspaces stay reachable from their parent's page; in the rail
+	 * they would only add unlabeled icons. */
+	.myrmex-sidebar-collapsed.myrmex-enabled [data-page-route="Workspaces"] .sidebar-child-item {
+		display: none;
+	}
+
+	.myrmex-sidebar-collapsed.myrmex-enabled [data-page-route="Workspaces"] .standard-sidebar-item.selected::before {
+		top: 28%;
+		bottom: 28%;
+	}
+}
+
+/* List and form side sections --------------------------------------------- */
+
+.myrmex-enabled .layout-side-section .sidebar-label {
+	font-size: var(--myrmex-text-sm);
+	font-weight: var(--myrmex-weight-semibold);
+	color: var(--myrmex-muted);
+	margin-bottom: var(--myrmex-space-2);
+}
+
+.myrmex-enabled .list-sidebar .sidebar-section {
+	margin-bottom: var(--myrmex-space-5);
+}
+
+.myrmex-enabled .list-sidebar .list-sidebar-button,
+.myrmex-enabled .list-sidebar .list-link > a {
+	border-radius: var(--myrmex-radius-sm);
+	padding: 6px var(--myrmex-space-2);
+	color: var(--myrmex-text);
+	transition: background-color var(--myrmex-transition), color var(--myrmex-transition);
+}
+
+.myrmex-enabled .list-sidebar .list-sidebar-button:hover,
+.myrmex-enabled .list-sidebar .list-link > a:hover {
+	background-color: var(--myrmex-sidebar-hover);
+	text-decoration: none;
+}
+
+.myrmex-enabled .list-sidebar .group-by-count {
+	color: var(--myrmex-muted);
+	font-variant-numeric: tabular-nums;
+}
+
+/* Mobile drawer (Frappe's own overlay sidebar) ----------------------------- */
+
+@media (max-width: 991px) {
+	.myrmex-enabled .layout-side-section .overlay-sidebar {
+		width: min(84vw, var(--myrmex-sidebar-width));
+		padding: var(--myrmex-space-3);
+		padding-top: max(var(--myrmex-space-3), env(safe-area-inset-top));
+		background-color: var(--myrmex-sidebar-background);
+		border-inline-end: 1px solid var(--myrmex-border);
+		box-shadow: var(--myrmex-shadow-lg);
+		transition: transform var(--myrmex-transition-slow);
+	}
+
+	.myrmex-enabled[dir="rtl"] .layout-side-section .overlay-sidebar {
+		left: auto;
+		right: 0;
+		transform: translateX(110%);
+	}
+
+	.myrmex-enabled[dir="rtl"] .layout-side-section .overlay-sidebar.opened {
+		transform: translateX(0);
+	}
+
+	.myrmex-enabled .layout-side-section div.close-sidebar {
+		background-color: rgba(15, 17, 23, 0.55);
+		opacity: 1;
+		-webkit-backdrop-filter: blur(2px);
+		backdrop-filter: blur(2px);
+	}
+
+	.myrmex-enabled .desk-sidebar .item-anchor {
+		min-height: var(--myrmex-touch-target);
+	}
+}

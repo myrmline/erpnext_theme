@@ -1,0 +1,432 @@
+/* Shared components: cards, buttons, inputs, dropdowns, dialogs, tabs, badges,
+ * pagination. Frappe's classes are restyled in place so behaviour, data
+ * attributes and event handlers are untouched. */
+
+/* Cards ------------------------------------------------------------------- */
+
+.myrmex-enabled .myrmex-card,
+.myrmex-enabled .form-section .section-body .frappe-card,
+.myrmex-enabled .dashboard-section {
+	background-color: var(--myrmex-surface);
+	border: 1px solid var(--myrmex-border);
+	border-radius: var(--myrmex-card-radius);
+	padding: var(--myrmex-card-padding);
+	box-shadow: var(--myrmex-shadow);
+	transition: box-shadow var(--myrmex-transition), border-color var(--myrmex-transition),
+		transform var(--myrmex-transition);
+}
+
+/* Cards stay still on hover unless they are a click target (see workspace). */
+
+/* Buttons ----------------------------------------------------------------- */
+
+.myrmex-enabled .btn {
+	border-radius: var(--myrmex-button-radius);
+	font-weight: var(--myrmex-weight-medium);
+	letter-spacing: 0;
+	box-shadow: none;
+	transition: background-color var(--myrmex-transition), border-color var(--myrmex-transition),
+		color var(--myrmex-transition), box-shadow var(--myrmex-transition),
+		transform var(--myrmex-transition);
+}
+
+.myrmex-enabled .btn:active:not(:disabled) {
+	transform: translateY(1px);
+}
+
+.myrmex-enabled .btn-sm,
+.myrmex-enabled .btn-group-sm > .btn {
+	min-height: 30px;
+	padding-inline: 10px;
+}
+
+.myrmex-enabled .btn.icon-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 30px;
+}
+
+.myrmex-enabled .btn:disabled,
+.myrmex-enabled .btn.disabled {
+	opacity: 0.55;
+	cursor: not-allowed;
+	transform: none;
+}
+
+.myrmex-enabled .btn-primary {
+	background-color: var(--myrmex-primary);
+	border-color: var(--myrmex-primary);
+	color: var(--myrmex-primary-contrast);
+}
+
+.myrmex-enabled .btn-primary:hover,
+.myrmex-enabled .btn-primary:focus,
+.myrmex-enabled .btn-primary:not(:disabled):not(.disabled):active {
+	background-color: color-mix(in srgb, var(--myrmex-primary) 86%, var(--myrmex-secondary));
+	border-color: color-mix(in srgb, var(--myrmex-primary) 86%, var(--myrmex-secondary));
+	color: var(--myrmex-primary-contrast);
+	box-shadow: var(--myrmex-shadow);
+}
+
+.myrmex-enabled .btn-primary-light {
+	background-color: var(--myrmex-primary-soft);
+	border-color: transparent;
+	color: var(--myrmex-primary);
+}
+
+.myrmex-enabled .btn-secondary,
+.myrmex-enabled .btn-default {
+	background-color: var(--myrmex-surface);
+	border: 1px solid var(--myrmex-border);
+	color: var(--myrmex-text);
+}
+
+.myrmex-enabled .btn-secondary:hover,
+.myrmex-enabled .btn-default:hover {
+	background-color: var(--myrmex-surface-alt);
+	border-color: var(--myrmex-border-strong);
+	color: var(--myrmex-text);
+}
+
+.myrmex-enabled .btn-success {
+	background-color: var(--myrmex-success);
+	border-color: var(--myrmex-success);
+	color: #fff;
+}
+
+.myrmex-enabled .btn-danger {
+	background-color: var(--myrmex-error);
+	border-color: var(--myrmex-error);
+	color: #fff;
+}
+
+.myrmex-enabled .btn-warning {
+	background-color: var(--myrmex-warning);
+	border-color: var(--myrmex-warning);
+	color: #111827;
+}
+
+.myrmex-enabled .myrmex-btn-outline {
+	background-color: transparent;
+	border: 1px solid var(--myrmex-primary);
+	color: var(--myrmex-primary);
+}
+
+.myrmex-enabled .myrmex-btn-outline:hover {
+	background-color: var(--myrmex-primary-soft);
+}
+
+.myrmex-enabled .btn-ghost,
+.myrmex-enabled .myrmex-btn-ghost {
+	background-color: transparent;
+	border-color: transparent;
+	color: var(--myrmex-text);
+}
+
+.myrmex-enabled .btn-ghost:hover,
+.myrmex-enabled .myrmex-btn-ghost:hover {
+	background-color: var(--myrmex-sidebar-hover);
+}
+
+/* Inputs ------------------------------------------------------------------ */
+
+.myrmex-enabled .form-control,
+.myrmex-enabled .input-with-feedback,
+.myrmex-enabled select.form-control,
+.myrmex-enabled textarea.form-control,
+.myrmex-enabled .like-disabled-input {
+	background-color: var(--myrmex-surface);
+	border: 1px solid var(--myrmex-border);
+	border-radius: var(--myrmex-input-radius);
+	color: var(--myrmex-text);
+	transition: border-color var(--myrmex-transition), box-shadow var(--myrmex-transition),
+		background-color var(--myrmex-transition);
+}
+
+.myrmex-enabled input.form-control,
+.myrmex-enabled select.form-control {
+	min-height: var(--myrmex-control-height);
+}
+
+.myrmex-enabled .form-control::placeholder {
+	color: var(--myrmex-muted);
+}
+
+.myrmex-enabled .form-control:hover:not(:focus):not([disabled]):not([readonly]) {
+	border-color: var(--myrmex-border-strong);
+}
+
+.myrmex-enabled .form-control:focus {
+	border-color: var(--myrmex-primary);
+	box-shadow: var(--myrmex-focus-ring);
+	outline: none;
+}
+
+/* Validation: Frappe marks missing mandatory fields with .has-error. */
+.myrmex-enabled .has-error .form-control,
+.myrmex-enabled .form-control.is-invalid {
+	border-color: var(--myrmex-error);
+}
+
+.myrmex-enabled .has-error .form-control:focus {
+	box-shadow: 0 0 0 3px var(--myrmex-error-soft);
+}
+
+.myrmex-enabled .has-error .control-label,
+.myrmex-enabled .invalid-feedback {
+	color: var(--myrmex-error-text);
+}
+
+.myrmex-enabled .help-box,
+.myrmex-enabled .frappe-control .help {
+	color: var(--myrmex-muted);
+	font-size: var(--myrmex-text-sm);
+}
+
+.myrmex-enabled .form-control[disabled],
+.myrmex-enabled .form-control[readonly] {
+	background-color: var(--myrmex-surface-alt);
+	color: var(--myrmex-muted);
+}
+
+.myrmex-enabled .control-label {
+	color: color-mix(in srgb, var(--myrmex-text) 72%, var(--myrmex-muted));
+	font-size: var(--myrmex-text-sm);
+	font-weight: var(--myrmex-weight-medium);
+	margin-bottom: var(--myrmex-space-1);
+}
+
+.myrmex-enabled .control-label.reqd::after {
+	color: var(--myrmex-error);
+}
+
+.myrmex-enabled .checkbox .input-area input[type="checkbox"],
+.myrmex-enabled input[type="checkbox"] {
+	accent-color: var(--myrmex-primary);
+}
+
+/* Dropdowns and awesomplete ---------------------------------------------- */
+
+.myrmex-enabled .dropdown-menu,
+.myrmex-enabled .awesomplete > ul {
+	background-color: var(--myrmex-surface);
+	border: 1px solid var(--myrmex-border);
+	border-radius: var(--myrmex-radius-md);
+	box-shadow: var(--myrmex-shadow-lg);
+	padding: var(--myrmex-space-1);
+	animation: myrmex-pop 140ms var(--myrmex-ease);
+}
+
+.myrmex-enabled .dropdown-item,
+.myrmex-enabled .awesomplete > ul > li {
+	border-radius: var(--myrmex-radius-sm);
+	padding: 7px var(--myrmex-space-3);
+	color: var(--myrmex-text);
+	transition: background-color var(--myrmex-transition), color var(--myrmex-transition);
+}
+
+.myrmex-enabled .dropdown-item:hover,
+.myrmex-enabled .dropdown-item:focus,
+.myrmex-enabled .awesomplete > ul > li[aria-selected="true"],
+.myrmex-enabled .awesomplete > ul > li:hover {
+	background-color: var(--myrmex-primary-soft);
+	color: var(--myrmex-primary);
+}
+
+.myrmex-enabled .dropdown-header {
+	padding: var(--myrmex-space-2) var(--myrmex-space-3) var(--myrmex-space-1);
+	font-size: var(--myrmex-text-xs);
+	font-weight: var(--myrmex-weight-semibold);
+	color: var(--myrmex-muted);
+}
+
+.myrmex-enabled .dropdown-divider {
+	border-color: var(--myrmex-border);
+	margin: var(--myrmex-space-1) 0;
+}
+
+@keyframes myrmex-pop {
+	from {
+		opacity: 0;
+		transform: translateY(-4px) scale(0.99);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+
+/* Dialogs ----------------------------------------------------------------- */
+
+.myrmex-enabled .modal-content {
+	background-color: var(--myrmex-surface);
+	border: 1px solid var(--myrmex-border);
+	border-radius: var(--myrmex-card-radius);
+	box-shadow: var(--myrmex-shadow-lg);
+	overflow: hidden;
+}
+
+.myrmex-enabled .modal-header {
+	background-color: var(--myrmex-surface);
+	border-bottom: 1px solid var(--myrmex-border);
+	padding: var(--myrmex-space-4) var(--myrmex-space-5);
+}
+
+.myrmex-enabled .modal-title {
+	font-weight: 600;
+	color: var(--myrmex-text);
+}
+
+.myrmex-enabled .modal-body {
+	padding: var(--myrmex-space-5);
+}
+
+.myrmex-enabled .modal-footer {
+	background-color: var(--myrmex-surface-alt);
+	border-top: 1px solid var(--myrmex-border);
+	padding: var(--myrmex-space-3) var(--myrmex-space-5);
+}
+
+.myrmex-enabled .modal-backdrop.show {
+	background-color: rgb(15, 17, 23);
+	opacity: 0.45;
+}
+
+.myrmex-enabled .modal.fade .modal-dialog {
+	transition: transform 180ms var(--myrmex-ease), opacity 180ms var(--myrmex-ease);
+}
+
+/* Tabs -------------------------------------------------------------------- */
+
+.myrmex-enabled .nav-tabs {
+	border-bottom: 1px solid var(--myrmex-border);
+	gap: var(--myrmex-space-4);
+}
+
+.myrmex-enabled .nav-tabs .nav-link {
+	border: none;
+	border-bottom: 2px solid transparent;
+	padding: var(--myrmex-space-3) 2px;
+	color: var(--myrmex-muted);
+	font-weight: 500;
+	transition: color var(--myrmex-transition), border-color var(--myrmex-transition);
+}
+
+.myrmex-enabled .nav-tabs .nav-link:hover {
+	color: var(--myrmex-text);
+}
+
+.myrmex-enabled .nav-tabs .nav-link.active {
+	background: transparent;
+	color: var(--myrmex-primary);
+	border-bottom-color: var(--myrmex-primary);
+}
+
+/* Badges and indicators --------------------------------------------------- */
+
+.myrmex-enabled .indicator-pill,
+.myrmex-enabled .myrmex-badge {
+	border-radius: 999px;
+	padding: 3px 10px;
+	font-size: 11px;
+	font-weight: 600;
+	letter-spacing: 0.01em;
+	border: 1px solid transparent;
+}
+
+.myrmex-enabled .indicator-pill {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	line-height: 1.4;
+	white-space: nowrap;
+}
+
+.myrmex-enabled .indicator-pill.green {
+	background-color: var(--myrmex-success-soft);
+	color: var(--myrmex-success-text);
+}
+
+.myrmex-enabled .indicator-pill.orange,
+.myrmex-enabled .indicator-pill.yellow {
+	background-color: var(--myrmex-warning-soft);
+	color: var(--myrmex-warning-text);
+}
+
+.myrmex-enabled .indicator-pill.red {
+	background-color: var(--myrmex-error-soft);
+	color: var(--myrmex-error-text);
+}
+
+.myrmex-enabled .indicator-pill.blue {
+	background-color: var(--myrmex-primary-soft);
+	color: var(--myrmex-primary);
+}
+
+.myrmex-enabled .indicator-pill.gray,
+.myrmex-enabled .indicator-pill.grey {
+	background-color: var(--myrmex-surface-alt);
+	color: var(--myrmex-muted);
+	border-color: var(--myrmex-border);
+}
+
+/* Alerts and toasts ------------------------------------------------------- */
+
+.myrmex-enabled .alert {
+	border-radius: var(--myrmex-radius-md);
+	border: 1px solid var(--myrmex-border);
+}
+
+/* frappe.show_alert toasts. */
+.myrmex-enabled .desk-alert {
+	border-radius: var(--myrmex-radius-md);
+	border: 1px solid var(--myrmex-border);
+	box-shadow: var(--myrmex-shadow-lg);
+	background-color: var(--myrmex-surface);
+	color: var(--myrmex-text);
+	animation: myrmex-pop 180ms var(--myrmex-ease);
+}
+
+/* Inline form messages (frm.set_intro, dashboard headlines). */
+.myrmex-enabled .form-message {
+	border-radius: var(--myrmex-radius-md);
+	padding: var(--myrmex-space-3) var(--myrmex-space-4);
+	font-size: var(--myrmex-text-base);
+}
+
+.myrmex-enabled .form-message.blue {
+	background-color: var(--myrmex-primary-soft);
+	color: var(--myrmex-text);
+}
+
+.myrmex-enabled .form-message.yellow,
+.myrmex-enabled .form-message.orange {
+	background-color: var(--myrmex-warning-soft);
+	color: var(--myrmex-text);
+}
+
+.myrmex-enabled .form-message.red {
+	background-color: var(--myrmex-error-soft);
+	color: var(--myrmex-text);
+}
+
+.myrmex-enabled .form-message.green {
+	background-color: var(--myrmex-success-soft);
+	color: var(--myrmex-text);
+}
+
+/* Pagination -------------------------------------------------------------- */
+
+.myrmex-enabled .list-paging-area .btn-group .btn,
+.myrmex-enabled .page-number-btn {
+	border-radius: var(--myrmex-button-radius);
+	color: var(--myrmex-muted);
+}
+
+.myrmex-enabled .list-paging-area .btn-group .btn.btn-info,
+.myrmex-enabled .page-number-btn.btn-info {
+	background-color: var(--myrmex-primary-soft);
+	color: var(--myrmex-primary);
+	border-color: transparent;
+}

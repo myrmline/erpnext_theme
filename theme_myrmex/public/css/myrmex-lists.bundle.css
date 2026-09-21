@@ -1,0 +1,423 @@
+/* List view, report view, tables, kanban and calendar.
+ *
+ * v15 list pages: .layout-main-section.frappe-card holds, in order,
+ *   .page-form (standard filters), .frappe-list > .filter-section,
+ *   .result (.list-row-head + .list-row-container…), .list-paging-area.
+ * The outer card carries the surface; the table sits flat inside it, so there
+ * is one card, not a card within a card. */
+
+.myrmex-enabled .layout-main-section.frappe-card {
+	background-color: var(--myrmex-surface);
+	border: 1px solid var(--myrmex-border);
+	border-radius: var(--myrmex-card-radius);
+	box-shadow: var(--myrmex-shadow);
+	/* No overflow:hidden here: filter and sort menus open inside this card. */
+}
+
+/* Filters and search ------------------------------------------------------ */
+
+.myrmex-enabled .frappe-card .page-form {
+	margin: 0;
+	padding: var(--myrmex-space-3) var(--myrmex-space-4);
+	border-bottom: 1px solid var(--myrmex-border);
+	background-color: transparent;
+	gap: var(--myrmex-space-2) 0;
+}
+
+.myrmex-enabled .frappe-list .filter-section,
+.myrmex-enabled .frappe-list .standard-filter-section {
+	gap: var(--myrmex-space-2);
+}
+
+.myrmex-enabled .frappe-list .filter-section {
+	padding: var(--myrmex-space-2) var(--myrmex-space-4);
+}
+
+.myrmex-enabled .filter-selector .btn,
+.myrmex-enabled .sort-selector .btn,
+.myrmex-enabled .filter-button {
+	background-color: var(--myrmex-surface);
+	border: 1px solid var(--myrmex-border);
+	border-radius: var(--myrmex-button-radius);
+	color: var(--myrmex-text);
+}
+
+.myrmex-enabled .filter-selector .btn:hover,
+.myrmex-enabled .sort-selector .btn:hover {
+	background-color: var(--myrmex-surface-alt);
+}
+
+/* An applied filter turns the button into a visible state. */
+.myrmex-enabled .filter-button.btn-primary-light {
+	background-color: var(--myrmex-primary-soft);
+	border-color: color-mix(in srgb, var(--myrmex-primary) 30%, transparent);
+	color: var(--myrmex-primary);
+}
+
+.myrmex-enabled .filter-x-button {
+	border-color: var(--myrmex-border);
+}
+
+.myrmex-enabled .tag-filters-area .filter-pill,
+.myrmex-enabled .filter-area .filter-pill {
+	background-color: var(--myrmex-primary-soft);
+	color: var(--myrmex-primary);
+	border-radius: var(--myrmex-radius-pill);
+}
+
+/* Rows ---------------------------------------------------------------------
+ * Everything from here to the Kanban section is driven by the Table Styles
+ * tokens, so list rows, report tables, child-table grids and plain tables all
+ * follow one set of choices. Two of those choices need a selector rather than
+ * a value and arrive as attributes on <html>:
+ *   [data-myrmex-table-hover]  none | tint | accent
+ *   [data-myrmex-table-paging] pills | buttons | minimal
+ * ------------------------------------------------------------------------- */
+
+.myrmex-enabled .frappe-list .result {
+	background-color: var(--myrmex-table-row-bg);
+	border: none;
+	border-radius: 0;
+	box-shadow: none;
+}
+
+.myrmex-enabled .list-row-head {
+	background-color: var(--myrmex-table-header-bg);
+	border-bottom: var(--myrmex-table-row-border-width) solid var(--myrmex-table-border);
+	padding-inline: var(--myrmex-table-cell-padding);
+	min-height: max(36px, calc(var(--myrmex-table-row-height) - 4px));
+	font-size: var(--myrmex-text-sm);
+	font-weight: var(--myrmex-table-header-weight);
+	text-transform: var(--myrmex-table-header-transform);
+	letter-spacing: var(--myrmex-table-header-tracking);
+	color: var(--myrmex-table-header-text);
+}
+
+/* Uppercase applies to column labels only. The row count and the bulk-action
+ * controls share the header row and stay as written. */
+.myrmex-enabled .list-row-head .list-count,
+.myrmex-enabled .list-row-head .level-right,
+.myrmex-enabled .list-row-head .btn,
+.myrmex-enabled .list-row-head .bulk-actions-area {
+	text-transform: none;
+	letter-spacing: normal;
+	font-weight: var(--myrmex-weight-regular);
+}
+
+.myrmex-enabled .list-row-container {
+	background-color: var(--myrmex-table-row-bg);
+	border-bottom: var(--myrmex-table-row-border-width) solid var(--myrmex-table-border);
+	transition: background-color var(--myrmex-transition), box-shadow var(--myrmex-transition);
+}
+
+.myrmex-enabled .list-row-container:last-child {
+	border-bottom: none;
+}
+
+/* v15 draws its own row separator; the container border replaces it. */
+.myrmex-enabled .list-row-container .list-row-border {
+	display: none;
+}
+
+.myrmex-enabled .list-row {
+	min-height: var(--myrmex-table-row-height);
+	padding-inline: var(--myrmex-table-cell-padding);
+	color: var(--myrmex-table-row-text);
+	background-color: transparent;
+	border-radius: 0;
+}
+
+/* Cell separators, when "All borders" is chosen. At 0 width nothing shows. */
+.myrmex-enabled .list-row .list-row-col + .list-row-col {
+	border-inline-start: var(--myrmex-table-cell-border-width) solid var(--myrmex-table-border);
+	padding-inline-start: calc(var(--myrmex-table-cell-border-width) * 12);
+}
+
+.myrmex-enabled[data-myrmex-table-hover="tint"] .list-row-container:hover,
+.myrmex-enabled[data-myrmex-table-hover="accent"] .list-row-container:hover {
+	background-color: var(--myrmex-table-hover-bg);
+}
+
+/* "Accent edge" also marks the hovered row on its leading edge. */
+.myrmex-enabled[data-myrmex-table-hover="accent"] .list-row-container:hover {
+	box-shadow: inset 3px 0 0 var(--myrmex-primary);
+}
+
+.myrmex-enabled .list-row-container:has(.list-row-checkbox:checked) {
+	background-color: var(--myrmex-table-selected-bg);
+	box-shadow: inset 3px 0 0 var(--myrmex-primary);
+}
+
+.myrmex-enabled .list-subject .level-item .ellipsis,
+.myrmex-enabled .list-subject a {
+	font-weight: var(--myrmex-weight-medium);
+}
+
+.myrmex-enabled .list-subject a:hover {
+	color: var(--myrmex-primary);
+}
+
+.myrmex-enabled .list-row .list-row-col .text-muted,
+.myrmex-enabled .list-row .modified {
+	color: var(--myrmex-muted);
+}
+
+.myrmex-enabled .list-row .list-row-col {
+	font-variant-numeric: tabular-nums;
+}
+
+/* Optional zebra striping, driven by the "Striped rows" setting. */
+.myrmex-zebra.myrmex-enabled .list-row-container:nth-child(even):not(:has(.list-row-checkbox:checked)) {
+	background-color: var(--myrmex-table-stripe-bg);
+}
+
+/* Paging and bulk actions -------------------------------------------------- */
+
+.myrmex-enabled .list-paging-area {
+	display: flex;
+	align-items: center;
+	justify-content: var(--myrmex-table-paging-justify);
+	gap: var(--myrmex-space-3);
+	padding: var(--myrmex-space-3) var(--myrmex-table-cell-padding);
+	border-top: var(--myrmex-table-row-border-width) solid var(--myrmex-table-border);
+	color: var(--myrmex-muted);
+}
+
+/* Centre and single-edge alignments only make sense if the two halves stop
+ * stretching to fill the bar. */
+.myrmex-enabled .list-paging-area > .level-left,
+.myrmex-enabled .list-paging-area > .level-right {
+	flex: 0 0 auto;
+}
+
+.myrmex-enabled .list-count {
+	color: var(--myrmex-muted);
+	font-variant-numeric: tabular-nums;
+}
+
+/* Pagination styles. Frappe marks the active page size with .btn-info. */
+.myrmex-enabled .list-paging-area .btn-paging,
+.myrmex-enabled .list-paging-area .btn-more {
+	transition: background-color var(--myrmex-transition), color var(--myrmex-transition),
+		border-color var(--myrmex-transition);
+}
+
+.myrmex-enabled[data-myrmex-table-paging="pills"] .list-paging-area .btn-paging,
+.myrmex-enabled[data-myrmex-table-paging="pills"] .list-paging-area .btn-more {
+	border-radius: var(--myrmex-radius-pill);
+	padding-inline: 12px;
+}
+
+.myrmex-enabled[data-myrmex-table-paging="pills"] .list-paging-area .btn-paging.btn-info,
+.myrmex-enabled[data-myrmex-table-paging="buttons"] .list-paging-area .btn-paging.btn-info {
+	background-color: var(--myrmex-primary-soft);
+	border-color: transparent;
+	color: var(--myrmex-primary);
+	font-weight: var(--myrmex-weight-semibold);
+}
+
+.myrmex-enabled[data-myrmex-table-paging="buttons"] .list-paging-area .btn-paging {
+	border-radius: 0;
+	margin: 0;
+}
+
+.myrmex-enabled[data-myrmex-table-paging="buttons"] .list-paging-area .btn-group > .btn-paging:first-child {
+	border-start-start-radius: var(--myrmex-button-radius);
+	border-end-start-radius: var(--myrmex-button-radius);
+}
+
+.myrmex-enabled[data-myrmex-table-paging="buttons"] .list-paging-area .btn-group > .btn-paging:last-child {
+	border-start-end-radius: var(--myrmex-button-radius);
+	border-end-end-radius: var(--myrmex-button-radius);
+}
+
+/* Minimal: type only, no chrome, the active size underlined. */
+.myrmex-enabled[data-myrmex-table-paging="minimal"] .list-paging-area .btn-paging,
+.myrmex-enabled[data-myrmex-table-paging="minimal"] .list-paging-area .btn-more {
+	background-color: transparent;
+	border-color: transparent;
+	box-shadow: none;
+	padding-inline: 8px;
+	color: var(--myrmex-muted);
+}
+
+.myrmex-enabled[data-myrmex-table-paging="minimal"] .list-paging-area .btn-paging:hover,
+.myrmex-enabled[data-myrmex-table-paging="minimal"] .list-paging-area .btn-more:hover {
+	background-color: transparent;
+	color: var(--myrmex-primary);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+.myrmex-enabled[data-myrmex-table-paging="minimal"] .list-paging-area .btn-paging.btn-info {
+	background-color: transparent;
+	color: var(--myrmex-text);
+	font-weight: var(--myrmex-weight-semibold);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+.myrmex-enabled .bulk-actions-area .btn,
+.myrmex-enabled .list-actions .btn {
+	border-radius: var(--myrmex-button-radius);
+}
+
+/* Report view and generic tables ------------------------------------------ */
+
+.myrmex-enabled .datatable {
+	border-radius: var(--myrmex-table-radius);
+	overflow: hidden;
+	border-color: var(--myrmex-table-border);
+	background-color: var(--myrmex-table-row-bg);
+}
+
+.myrmex-enabled .datatable .dt-header,
+.myrmex-enabled .datatable .dt-row-header .dt-cell {
+	background-color: var(--myrmex-table-header-bg);
+	color: var(--myrmex-table-header-text);
+	font-weight: var(--myrmex-table-header-weight);
+	text-transform: var(--myrmex-table-header-transform);
+	letter-spacing: var(--myrmex-table-header-tracking);
+}
+
+.myrmex-enabled .datatable .dt-cell {
+	border-color: var(--myrmex-table-border);
+	border-inline-end-width: var(--myrmex-table-cell-border-width);
+	border-bottom-width: var(--myrmex-table-row-border-width);
+	color: var(--myrmex-table-row-text);
+	background-color: var(--myrmex-table-row-bg);
+	padding-inline: calc(var(--myrmex-table-cell-padding) / 2);
+}
+
+.myrmex-enabled .datatable .dt-cell__content {
+	min-height: calc(var(--myrmex-table-row-height) - 8px);
+	display: flex;
+	align-items: center;
+}
+
+.myrmex-enabled .datatable .dt-cell--focus {
+	box-shadow: inset 0 0 0 2px var(--myrmex-primary);
+}
+
+.myrmex-zebra.myrmex-enabled .datatable .dt-row--odd:not(.dt-row--highlight) .dt-cell {
+	background-color: var(--myrmex-table-stripe-bg);
+}
+
+.myrmex-enabled[data-myrmex-table-hover="tint"] .datatable .dt-row:hover .dt-cell,
+.myrmex-enabled[data-myrmex-table-hover="accent"] .datatable .dt-row:hover .dt-cell {
+	background-color: var(--myrmex-table-hover-bg);
+}
+
+.myrmex-enabled .datatable .dt-row--highlight .dt-cell {
+	background-color: var(--myrmex-table-selected-bg);
+}
+
+.myrmex-enabled table.table {
+	color: var(--myrmex-table-row-text);
+	border-color: var(--myrmex-table-border);
+	border-radius: var(--myrmex-table-radius);
+	overflow: hidden;
+}
+
+.myrmex-enabled table.table thead th {
+	background-color: var(--myrmex-table-header-bg);
+	border-bottom: var(--myrmex-table-row-border-width) solid var(--myrmex-table-border);
+	color: var(--myrmex-table-header-text);
+	font-size: var(--myrmex-text-sm);
+	font-weight: var(--myrmex-table-header-weight);
+	text-transform: var(--myrmex-table-header-transform);
+	letter-spacing: var(--myrmex-table-header-tracking);
+	padding: var(--myrmex-space-2) calc(var(--myrmex-table-cell-padding) * 0.75);
+}
+
+.myrmex-enabled table.table td {
+	border-color: var(--myrmex-table-border);
+	border-top-width: var(--myrmex-table-row-border-width);
+	padding: 0 calc(var(--myrmex-table-cell-padding) * 0.75);
+	height: var(--myrmex-table-row-height);
+	vertical-align: middle;
+}
+
+.myrmex-enabled table.table th + th,
+.myrmex-enabled table.table td + td {
+	border-inline-start: var(--myrmex-table-cell-border-width) solid var(--myrmex-table-border);
+}
+
+.myrmex-enabled table.table tbody tr {
+	background-color: var(--myrmex-table-row-bg);
+}
+
+.myrmex-zebra.myrmex-enabled table.table tbody tr:nth-child(even) {
+	background-color: var(--myrmex-table-stripe-bg);
+}
+
+.myrmex-enabled[data-myrmex-table-hover="tint"] table.table tbody tr:hover,
+.myrmex-enabled[data-myrmex-table-hover="accent"] table.table tbody tr:hover {
+	background-color: var(--myrmex-table-hover-bg);
+}
+
+/* Wide tables get their own horizontal scroll instead of pushing the page. */
+.myrmex-enabled .myrmex-table-wrapper,
+.myrmex-enabled .report-wrapper,
+.myrmex-enabled .table-responsive {
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+	max-width: 100%;
+}
+
+/* Kanban ------------------------------------------------------------------- */
+
+.myrmex-enabled .kanban .kanban-column {
+	background-color: var(--myrmex-surface-alt);
+	border: 1px solid var(--myrmex-border);
+	border-radius: var(--myrmex-card-radius);
+}
+
+.myrmex-enabled .kanban .kanban-card,
+.myrmex-enabled .kanban-card.content {
+	background-color: var(--myrmex-surface);
+	border: 1px solid var(--myrmex-border);
+	border-radius: var(--myrmex-radius-md);
+	box-shadow: var(--myrmex-shadow);
+	transition: box-shadow var(--myrmex-transition), transform var(--myrmex-transition);
+}
+
+.myrmex-enabled .kanban .kanban-card:hover {
+	box-shadow: var(--myrmex-shadow-hover);
+}
+
+.myrmex-enabled .kanban .kanban-column-title {
+	font-weight: var(--myrmex-weight-semibold);
+	color: var(--myrmex-text);
+}
+
+/* Calendar and Gantt -------------------------------------------------------- */
+
+.myrmex-enabled .fc-view-container,
+.myrmex-enabled .fc-unthemed .fc-content,
+.myrmex-enabled .fc-unthemed td,
+.myrmex-enabled .fc-unthemed th {
+	border-color: var(--myrmex-border);
+}
+
+.myrmex-enabled .fc-toolbar h2 {
+	font-size: var(--myrmex-text-lg);
+	font-weight: var(--myrmex-weight-semibold);
+	color: var(--myrmex-text);
+}
+
+.myrmex-enabled .fc-event {
+	border-radius: var(--myrmex-radius-sm);
+	border: none;
+	background-color: var(--myrmex-primary);
+	color: var(--myrmex-primary-contrast);
+	padding: 2px 6px;
+}
+
+.myrmex-enabled .fc-unthemed .fc-today {
+	background-color: var(--myrmex-primary-soft);
+}
+
+.myrmex-enabled .gantt .bar {
+	fill: var(--myrmex-primary);
+}

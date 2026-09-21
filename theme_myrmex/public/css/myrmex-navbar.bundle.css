@@ -1,0 +1,282 @@
+/* Navbar. Selectors follow the Frappe v15 markup:
+ *   .sticky-top > header.navbar.navbar-expand > .container >
+ *     a.navbar-brand.navbar-home, ul#navbar-breadcrumbs,
+ *     .navbar-collapse > form (search) + ul.navbar-nav (controls)
+ * Every native control is restyled in place; none is removed or re-parented. */
+
+.myrmex-enabled header.navbar {
+	height: var(--myrmex-navbar-height);
+	min-height: var(--myrmex-navbar-height);
+	background-color: color-mix(in srgb, var(--myrmex-navbar-background) 92%, transparent);
+	-webkit-backdrop-filter: saturate(1.4) blur(10px);
+	backdrop-filter: saturate(1.4) blur(10px);
+	border-bottom: 1px solid var(--myrmex-navbar-border);
+	box-shadow: none;
+	padding: 0 var(--myrmex-space-4);
+	transition: box-shadow var(--myrmex-transition), background-color var(--myrmex-transition);
+}
+
+.myrmex-enabled header.navbar.myrmex-scrolled {
+	box-shadow: 0 4px 14px -8px rgba(16, 24, 40, 0.2);
+}
+
+.myrmex-enabled header.navbar > .container {
+	max-width: none;
+	height: 100%;
+	padding: 0;
+	gap: var(--myrmex-space-2);
+	flex-wrap: nowrap;
+}
+
+.myrmex-enabled .navbar-brand {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--myrmex-space-2);
+	margin-inline-end: var(--myrmex-space-2);
+	padding: 4px;
+	border-radius: var(--myrmex-radius-sm);
+	font-weight: var(--myrmex-weight-bold);
+	color: var(--myrmex-navbar-text);
+}
+
+.myrmex-enabled .navbar-brand:hover {
+	background-color: var(--myrmex-sidebar-hover);
+}
+
+.myrmex-enabled .navbar-brand img,
+.myrmex-enabled .navbar-brand .app-logo {
+	height: 24px;
+	width: auto;
+	max-width: 140px;
+}
+
+/* Rail toggle, injected by myrmex-navbar.js. Only shown where it does
+ * something: desktop pages that have a workspace sidebar. */
+.myrmex-enabled .myrmex-nav-toggle {
+	display: none;
+	align-items: center;
+	justify-content: center;
+	flex: 0 0 auto;
+	width: var(--myrmex-control-height);
+	height: var(--myrmex-control-height);
+	border: none;
+	background: transparent;
+	border-radius: var(--myrmex-button-radius);
+	color: var(--myrmex-muted);
+	cursor: pointer;
+	transition: background-color var(--myrmex-transition), color var(--myrmex-transition);
+}
+
+.myrmex-enabled.myrmex-has-rail .myrmex-nav-toggle {
+	display: inline-flex;
+}
+
+.myrmex-enabled .myrmex-nav-toggle:hover,
+.myrmex-enabled .myrmex-nav-toggle[aria-pressed="true"] {
+	background-color: var(--myrmex-sidebar-hover);
+	color: var(--myrmex-navbar-text);
+}
+
+.myrmex-enabled .myrmex-nav-toggle svg {
+	width: 18px;
+	height: 18px;
+}
+
+.myrmex-enabled[dir="rtl"] .myrmex-nav-toggle svg {
+	transform: scaleX(-1);
+}
+
+/* Search ------------------------------------------------------------------ */
+
+.myrmex-enabled .navbar .navbar-collapse > form {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+
+.myrmex-enabled .navbar .search-bar {
+	flex: 0 1 460px;
+	margin-inline-start: auto;
+}
+
+.myrmex-enabled #navbar-search {
+	height: 36px;
+	width: 100%;
+	background-color: var(--myrmex-navbar-search-background);
+	border: 1px solid transparent;
+	border-radius: var(--myrmex-input-radius);
+	padding-inline-start: 34px;
+	color: var(--myrmex-text);
+	font-size: var(--myrmex-text-base);
+	transition: background-color var(--myrmex-transition), border-color var(--myrmex-transition),
+		box-shadow var(--myrmex-transition);
+}
+
+.myrmex-enabled #navbar-search::placeholder {
+	color: var(--myrmex-muted);
+}
+
+.myrmex-enabled #navbar-search:hover:not(:focus) {
+	border-color: var(--myrmex-border);
+}
+
+.myrmex-enabled #navbar-search:focus {
+	background-color: var(--myrmex-surface);
+	border-color: var(--myrmex-primary);
+	box-shadow: var(--myrmex-focus-ring);
+}
+
+.myrmex-enabled .navbar .search-bar .search-icon {
+	color: var(--myrmex-muted);
+}
+
+/* Right-hand controls ----------------------------------------------------- */
+
+.myrmex-enabled .navbar-nav {
+	align-items: center;
+	gap: 2px;
+}
+
+.myrmex-enabled .navbar-nav > .nav-item > .nav-link {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--myrmex-space-1);
+	min-width: var(--myrmex-control-height);
+	height: var(--myrmex-control-height);
+	padding: 0 var(--myrmex-space-2);
+	border-radius: var(--myrmex-button-radius);
+	color: var(--myrmex-navbar-text);
+	font-size: var(--myrmex-text-base);
+	font-weight: var(--myrmex-weight-medium);
+	transition: background-color var(--myrmex-transition), color var(--myrmex-transition);
+}
+
+.myrmex-enabled .navbar-nav > .nav-item > .nav-link.text-muted {
+	color: var(--myrmex-muted);
+}
+
+.myrmex-enabled .navbar-nav > .nav-item > .nav-link:hover,
+.myrmex-enabled .navbar-nav > .nav-item.show > .nav-link {
+	background-color: var(--myrmex-sidebar-hover);
+	color: var(--myrmex-navbar-text);
+}
+
+.myrmex-enabled .navbar .vertical-bar {
+	width: 1px;
+	height: 20px;
+	margin: 0 var(--myrmex-space-2);
+	background-color: var(--myrmex-navbar-border);
+}
+
+/* Avatar. The user-menu button gets a ring rather than a background. */
+.myrmex-enabled .dropdown-navbar-user > .nav-link {
+	padding: 0 2px;
+	border-radius: var(--myrmex-radius-pill);
+}
+
+.myrmex-enabled .dropdown-navbar-user > .nav-link:hover,
+.myrmex-enabled .dropdown-navbar-user.show > .nav-link {
+	background-color: transparent;
+}
+
+.myrmex-enabled .navbar .avatar {
+	border-radius: var(--myrmex-radius-pill);
+	box-shadow: 0 0 0 2px var(--myrmex-navbar-background), 0 0 0 3px var(--myrmex-border);
+	transition: box-shadow var(--myrmex-transition);
+}
+
+.myrmex-enabled .dropdown-navbar-user > .nav-link:hover .avatar,
+.myrmex-enabled .dropdown-navbar-user.show .avatar {
+	box-shadow: 0 0 0 2px var(--myrmex-navbar-background), 0 0 0 4px var(--myrmex-primary);
+}
+
+/* Unseen notifications: Frappe swaps the icon; give it the accent. */
+.myrmex-enabled .navbar .notifications-unseen {
+	color: var(--myrmex-primary);
+}
+
+/* Menus ------------------------------------------------------------------- */
+
+.myrmex-enabled .navbar .dropdown-menu {
+	margin-top: var(--myrmex-space-2);
+	min-width: 230px;
+}
+
+.myrmex-enabled #toolbar-user .dropdown-item,
+.myrmex-enabled #toolbar-help .dropdown-item {
+	font-size: var(--myrmex-text-base);
+}
+
+.myrmex-enabled #toolbar-user .myrmex-chat-menu-item {
+	color: var(--myrmex-primary);
+	font-weight: var(--myrmex-weight-semibold);
+}
+
+/* Notification panel (v15: .dropdown-menu.notifications-list). */
+.myrmex-enabled .navbar .notifications-list {
+	width: min(420px, calc(100vw - 24px));
+	padding: 0;
+	overflow: hidden;
+}
+
+.myrmex-enabled .notifications-list .notification-list-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: var(--myrmex-space-2) var(--myrmex-space-3) 0;
+	border-bottom: 1px solid var(--myrmex-border);
+}
+
+.myrmex-enabled .notifications-list .notification-item-tabs {
+	border-bottom: none;
+	gap: var(--myrmex-space-3);
+}
+
+.myrmex-enabled .notifications-list .notification-list-body {
+	max-height: min(520px, 70vh);
+	overflow-y: auto;
+}
+
+.myrmex-enabled .notifications-list .recent-item {
+	display: block;
+	padding: var(--myrmex-space-3);
+	border-bottom: 1px solid var(--myrmex-border);
+	color: var(--myrmex-text);
+	transition: background-color var(--myrmex-transition);
+}
+
+.myrmex-enabled .notifications-list .recent-item:last-child {
+	border-bottom: none;
+}
+
+.myrmex-enabled .notifications-list .recent-item:hover {
+	background-color: var(--myrmex-surface-alt);
+	text-decoration: none;
+}
+
+.myrmex-enabled .notifications-list .notification-item.unread {
+	background-color: color-mix(in srgb, var(--myrmex-primary) 5%, var(--myrmex-surface));
+	box-shadow: inset 3px 0 0 var(--myrmex-primary);
+}
+
+.myrmex-enabled .notifications-list .notification-timestamp {
+	font-size: var(--myrmex-text-xs);
+	color: var(--myrmex-muted);
+}
+
+.myrmex-enabled .notifications-list .notification-null-state,
+.myrmex-enabled .notifications-list .null-state {
+	padding: var(--myrmex-space-6) var(--myrmex-space-4);
+	color: var(--myrmex-muted);
+	text-align: center;
+}
+
+/* Page actions ------------------------------------------------------------ */
+
+.myrmex-enabled .page-head .page-actions {
+	gap: var(--myrmex-space-2);
+}
+
+.myrmex-enabled .page-head .page-actions .standard-actions {
+	gap: var(--myrmex-space-2);
+}

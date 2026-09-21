@@ -1,0 +1,853 @@
+/* Myrmex Assistant.
+ *
+ * The launcher reuses the brand mark from the sidebar (a rounded square with
+ * an initial), so the assistant reads as part of the product rather than a
+ * third-party widget. Physical left/right are never used: the panel mirrors
+ * in right-to-left languages. */
+
+.myrmex-chat {
+	/* Defaults, overridable per site from Chatbot Settings (*-custom are
+	 * written inline by myrmex-chatbot.js). */
+	--myrmex-chat-accent: var(--myrmex-chat-accent-custom, var(--myrmex-primary));
+	--myrmex-chat-accent-text: var(--myrmex-chat-accent-text-custom, var(--myrmex-primary-contrast));
+	--myrmex-chat-background: var(--myrmex-chat-background-custom, var(--myrmex-surface));
+	--myrmex-chat-user-bubble: var(--myrmex-chat-user-bubble-custom, var(--myrmex-chat-accent));
+	--myrmex-chat-user-text: var(--myrmex-chat-user-text-custom, var(--myrmex-chat-accent-text));
+	--myrmex-chat-assistant-bubble: var(--myrmex-chat-assistant-bubble-custom, var(--myrmex-surface-alt));
+	--myrmex-chat-radius: 16px;
+	--myrmex-chat-width: 400px;
+	--myrmex-chat-height: 620px;
+	--myrmex-chat-gap: 20px;
+	--myrmex-chat-launcher: 52px;
+
+	position: fixed;
+	inset-block-end: calc(var(--myrmex-chat-gap) + env(safe-area-inset-bottom, 0px));
+	inset-inline-end: calc(var(--myrmex-chat-gap) + env(safe-area-inset-right, 0px));
+	z-index: var(--myrmex-z-chat);
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	gap: var(--myrmex-space-3);
+	font-size: var(--myrmex-text-md);
+	color: var(--myrmex-text);
+	pointer-events: none;
+}
+
+.myrmex-chat[data-position="left"] {
+	inset-inline-end: auto;
+	inset-inline-start: calc(var(--myrmex-chat-gap) + env(safe-area-inset-left, 0px));
+	align-items: flex-start;
+}
+
+.myrmex-chat[hidden] {
+	display: none;
+}
+
+.myrmex-chat > * {
+	pointer-events: auto;
+}
+
+.myrmex-chat .myrmex-chat__icon {
+	width: 18px;
+	height: 18px;
+	flex: 0 0 auto;
+}
+
+/* Launcher ----------------------------------------------------------------- */
+
+.myrmex-chat__launcher {
+	order: 2;
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: var(--myrmex-chat-launcher);
+	height: var(--myrmex-chat-launcher);
+	padding: 0;
+	border: none;
+	border-radius: calc(var(--myrmex-chat-radius) * 0.9);
+	background-color: var(--myrmex-chat-accent);
+	color: var(--myrmex-chat-accent-text);
+	box-shadow: var(--myrmex-shadow-lg), inset 0 -3px 0 rgba(0, 0, 0, 0.14);
+	cursor: pointer;
+	transition: transform var(--myrmex-transition), box-shadow var(--myrmex-transition),
+		border-radius var(--myrmex-transition-slow);
+}
+
+.myrmex-chat__launcher:hover {
+	transform: translateY(-2px);
+}
+
+.myrmex-chat__launcher:active {
+	transform: translateY(0);
+}
+
+.myrmex-chat__launcher:focus-visible {
+	outline: 3px solid var(--myrmex-chat-accent);
+	outline-offset: 3px;
+}
+
+/* Open: the launcher settles into a round "close" affordance. */
+.myrmex-chat.is-open .myrmex-chat__launcher {
+	border-radius: 50%;
+	box-shadow: var(--myrmex-shadow-hover);
+}
+
+/* Closed: the brand mark. Open: a chevron that minimizes. */
+.myrmex-chat__launcher-close {
+	display: none;
+}
+
+.myrmex-chat.is-open .myrmex-chat__launcher .myrmex-chat__avatar {
+	display: none;
+}
+
+.myrmex-chat.is-open .myrmex-chat__launcher-close {
+	display: inline-flex;
+}
+
+.myrmex-chat__launcher-close .myrmex-chat__icon {
+	width: 22px;
+	height: 22px;
+}
+
+.myrmex-chat__panel:focus {
+	outline: none;
+}
+
+.myrmex-chat__avatar {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	font-weight: var(--myrmex-weight-bold);
+	line-height: 1;
+	flex: 0 0 auto;
+}
+
+.myrmex-chat__launcher .myrmex-chat__avatar {
+	width: 100%;
+	height: 100%;
+	font-size: 22px;
+}
+
+.myrmex-chat__avatar img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.myrmex-chat__unread {
+	position: absolute;
+	inset-block-start: -3px;
+	inset-inline-end: -3px;
+	width: 14px;
+	height: 14px;
+	border-radius: 50%;
+	background-color: var(--myrmex-error);
+	box-shadow: 0 0 0 3px var(--myrmex-background);
+}
+
+.myrmex-chat__unread[hidden] {
+	display: none;
+}
+
+/* Panel -------------------------------------------------------------------- */
+
+.myrmex-chat__panel {
+	order: 1;
+	display: flex;
+	flex-direction: column;
+	width: min(var(--myrmex-chat-width), calc(100vw - 2 * var(--myrmex-chat-gap)));
+	height: min(
+		var(--myrmex-chat-height),
+		calc(100dvh - var(--myrmex-navbar-height) - var(--myrmex-chat-launcher) - 3 * var(--myrmex-chat-gap))
+	);
+	min-height: 360px;
+	background-color: var(--myrmex-chat-background);
+	border: 1px solid var(--myrmex-border);
+	border-radius: var(--myrmex-chat-radius);
+	box-shadow: var(--myrmex-shadow-lg);
+	overflow: hidden;
+	opacity: 0;
+	transform: translateY(12px) scale(0.98);
+	transform-origin: bottom right;
+	transition: opacity 180ms var(--myrmex-ease), transform 220ms var(--myrmex-ease);
+}
+
+.myrmex-chat[data-position="left"] .myrmex-chat__panel {
+	transform-origin: bottom left;
+}
+
+.myrmex-chat.is-open .myrmex-chat__panel {
+	opacity: 1;
+	transform: none;
+}
+
+.myrmex-chat__panel[hidden] {
+	display: none;
+}
+
+/* Header */
+.myrmex-chat__header {
+	display: flex;
+	align-items: center;
+	gap: var(--myrmex-space-3);
+	padding-block: var(--myrmex-space-3);
+	padding-inline: var(--myrmex-space-4) var(--myrmex-space-2);
+	border-bottom: 1px solid var(--myrmex-border);
+	background-color: var(--myrmex-chat-background);
+}
+
+.myrmex-chat__header .myrmex-chat__avatar {
+	width: 34px;
+	height: 34px;
+	border-radius: var(--myrmex-radius-md);
+	background-color: var(--myrmex-chat-accent);
+	color: var(--myrmex-chat-accent-text);
+	font-size: var(--myrmex-text-lg);
+	box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.12);
+}
+
+.myrmex-chat__heading-text {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+
+.myrmex-chat__title {
+	margin: 0;
+	font-size: var(--myrmex-text-md);
+	font-weight: var(--myrmex-weight-semibold);
+	line-height: var(--myrmex-leading-tight);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.myrmex-chat__status {
+	margin: 2px 0 0;
+	font-size: var(--myrmex-text-xs);
+	color: var(--myrmex-muted);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.myrmex-chat.is-busy .myrmex-chat__status {
+	color: var(--myrmex-chat-accent);
+}
+
+.myrmex-chat__actions {
+	display: flex;
+	align-items: center;
+	gap: 2px;
+}
+
+.myrmex-chat__icon-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	padding: 0;
+	border: none;
+	border-radius: var(--myrmex-button-radius);
+	background: transparent;
+	color: var(--myrmex-muted);
+	cursor: pointer;
+	transition: background-color var(--myrmex-transition), color var(--myrmex-transition);
+}
+
+.myrmex-chat__icon-btn:hover {
+	background-color: var(--myrmex-sidebar-hover);
+	color: var(--myrmex-text);
+}
+
+.myrmex-chat__icon-btn:disabled {
+	opacity: 0.45;
+	cursor: not-allowed;
+}
+
+/* Directional arrows point the other way in right-to-left languages. */
+.myrmex-chat__panel[dir="rtl"] [data-action="history"] .myrmex-chat__icon,
+.myrmex-chat__panel[dir="rtl"] .myrmex-chat__send .myrmex-chat__icon {
+	transform: scaleX(-1);
+}
+
+/* Body */
+.myrmex-chat__body {
+	position: relative;
+	flex: 1 1 auto;
+	min-height: 0;
+	display: flex;
+	flex-direction: column;
+}
+
+.myrmex-chat__messages,
+.myrmex-chat__history {
+	flex: 1 1 auto;
+	min-height: 0;
+	overflow-y: auto;
+	overscroll-behavior: contain;
+	padding: var(--myrmex-space-4);
+	scroll-behavior: smooth;
+}
+
+.myrmex-chat__messages[hidden],
+.myrmex-chat__history[hidden] {
+	display: none;
+}
+
+.myrmex-chat__messages {
+	display: flex;
+	flex-direction: column;
+	gap: var(--myrmex-space-3);
+}
+
+/* Messages ----------------------------------------------------------------- */
+
+.myrmex-chat__message {
+	display: flex;
+	flex-direction: column;
+	max-width: 88%;
+	animation: myrmex-chat-in 200ms var(--myrmex-ease);
+}
+
+.myrmex-chat__message.is-user {
+	align-self: flex-end;
+	align-items: flex-end;
+}
+
+.myrmex-chat__message.is-assistant {
+	align-self: flex-start;
+	align-items: flex-start;
+}
+
+@keyframes myrmex-chat-in {
+	from {
+		opacity: 0;
+		transform: translateY(4px);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+.myrmex-chat__bubble {
+	padding: 9px 13px;
+	border-radius: calc(var(--myrmex-chat-radius) * 0.85);
+	line-height: var(--myrmex-leading);
+	overflow-wrap: anywhere;
+	white-space: normal;
+}
+
+.myrmex-chat__message.is-user .myrmex-chat__bubble {
+	background-color: var(--myrmex-chat-user-bubble);
+	color: var(--myrmex-chat-user-text);
+	border-end-end-radius: var(--myrmex-radius-xs);
+	white-space: pre-wrap;
+}
+
+.myrmex-chat__message.is-assistant .myrmex-chat__bubble {
+	background-color: var(--myrmex-chat-assistant-bubble);
+	color: var(--myrmex-text);
+	border: 1px solid var(--myrmex-border);
+	border-end-start-radius: var(--myrmex-radius-xs);
+}
+
+.myrmex-chat__message.is-error .myrmex-chat__bubble {
+	background-color: var(--myrmex-error-soft);
+	border-color: color-mix(in srgb, var(--myrmex-error) 35%, transparent);
+	color: var(--myrmex-text);
+	white-space: pre-wrap;
+}
+
+.myrmex-chat__bubble > :first-child {
+	margin-top: 0;
+}
+
+.myrmex-chat__bubble > :last-child {
+	margin-bottom: 0;
+}
+
+.myrmex-chat__bubble p,
+.myrmex-chat__bubble ul,
+.myrmex-chat__bubble ol {
+	margin: 0 0 var(--myrmex-space-2);
+}
+
+.myrmex-chat__bubble ul,
+.myrmex-chat__bubble ol {
+	padding-inline-start: 1.25em;
+}
+
+.myrmex-chat__bubble li + li {
+	margin-top: 2px;
+}
+
+.myrmex-chat__bubble .myrmex-chat__heading {
+	font-weight: var(--myrmex-weight-semibold);
+}
+
+.myrmex-chat__bubble code {
+	padding: 1px 5px;
+	border-radius: var(--myrmex-radius-xs);
+	background-color: color-mix(in srgb, var(--myrmex-text) 8%, transparent);
+	color: inherit;
+	font-size: 0.9em;
+}
+
+.myrmex-chat__bubble pre {
+	margin: 0 0 var(--myrmex-space-2);
+	padding: var(--myrmex-space-2) var(--myrmex-space-3);
+	border-radius: var(--myrmex-radius-sm);
+	background-color: color-mix(in srgb, var(--myrmex-text) 6%, var(--myrmex-surface));
+	overflow-x: auto;
+	direction: ltr;
+	text-align: start;
+}
+
+.myrmex-chat__bubble pre code {
+	padding: 0;
+	background: none;
+	font-size: var(--myrmex-text-sm);
+}
+
+.myrmex-chat__bubble a {
+	color: var(--myrmex-chat-accent);
+	text-decoration: underline;
+	text-underline-offset: 2px;
+}
+
+.myrmex-chat__retry {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	margin-top: var(--myrmex-space-1);
+	padding: 4px 8px;
+	border: none;
+	border-radius: var(--myrmex-button-radius);
+	background: transparent;
+	color: var(--myrmex-chat-accent);
+	font-size: var(--myrmex-text-sm);
+	font-weight: var(--myrmex-weight-medium);
+	cursor: pointer;
+}
+
+.myrmex-chat__retry:hover {
+	background-color: var(--myrmex-primary-soft);
+}
+
+.myrmex-chat__retry .myrmex-chat__icon {
+	width: 14px;
+	height: 14px;
+}
+
+/* Typing indicator */
+.myrmex-chat__typing .myrmex-chat__bubble {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	padding: 12px 14px;
+}
+
+.myrmex-chat__typing i {
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	background-color: var(--myrmex-muted);
+	animation: myrmex-chat-dot 1.1s ease-in-out infinite;
+}
+
+.myrmex-chat__typing i:nth-of-type(2) {
+	animation-delay: 0.15s;
+}
+
+.myrmex-chat__typing i:nth-of-type(3) {
+	animation-delay: 0.3s;
+}
+
+@keyframes myrmex-chat-dot {
+	0%,
+	60%,
+	100% {
+		opacity: 0.35;
+		transform: translateY(0);
+	}
+	30% {
+		opacity: 1;
+		transform: translateY(-3px);
+	}
+}
+
+.myrmex-chat__skeleton {
+	height: 38px;
+	margin-bottom: var(--myrmex-space-3);
+}
+
+/* Composer ----------------------------------------------------------------- */
+
+.myrmex-chat__composer {
+	flex: 0 0 auto;
+	padding: var(--myrmex-space-2) var(--myrmex-space-3) var(--myrmex-space-3);
+	border-top: 1px solid var(--myrmex-border);
+	background-color: var(--myrmex-chat-background);
+}
+
+.myrmex-chat.is-history .myrmex-chat__composer {
+	display: none;
+}
+
+.myrmex-chat__suggestions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+	padding: var(--myrmex-space-1) 0 var(--myrmex-space-2);
+}
+
+.myrmex-chat__suggestions[hidden] {
+	display: none;
+}
+
+.myrmex-chat__chip {
+	display: inline-flex;
+	align-items: center;
+	min-height: 30px;
+	padding: 4px 11px;
+	border: 1px solid color-mix(in srgb, var(--myrmex-chat-accent) 30%, var(--myrmex-border));
+	border-radius: var(--myrmex-radius-pill);
+	background-color: var(--myrmex-chat-background);
+	color: var(--myrmex-text);
+	font-size: var(--myrmex-text-sm);
+	font-weight: var(--myrmex-weight-medium);
+	text-align: start;
+	cursor: pointer;
+	transition: background-color var(--myrmex-transition), border-color var(--myrmex-transition),
+		color var(--myrmex-transition);
+}
+
+.myrmex-chat__chip:hover {
+	background-color: var(--myrmex-primary-soft);
+	border-color: var(--myrmex-chat-accent);
+	color: var(--myrmex-chat-accent);
+}
+
+/* Context chip: what the assistant can see, and a switch to stop sharing. */
+.myrmex-chat__context {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	margin-bottom: var(--myrmex-space-2);
+	padding-block: 4px;
+	padding-inline: 8px 4px;
+	border-radius: var(--myrmex-radius-sm);
+	background-color: var(--myrmex-surface-alt);
+	color: var(--myrmex-muted);
+	font-size: var(--myrmex-text-xs);
+}
+
+.myrmex-chat__context[hidden] {
+	display: none;
+}
+
+.myrmex-chat__context .myrmex-chat__icon {
+	width: 14px;
+	height: 14px;
+	color: var(--myrmex-chat-accent);
+}
+
+.myrmex-chat__context.is-off .myrmex-chat__icon {
+	color: var(--myrmex-muted);
+}
+
+.myrmex-chat__context-label {
+	flex: 1 1 auto;
+	min-width: 0;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.myrmex-chat__context-toggle {
+	flex: 0 0 auto;
+	padding: 2px 8px;
+	border: none;
+	border-radius: var(--myrmex-radius-xs);
+	background: transparent;
+	color: var(--myrmex-text);
+	font-size: var(--myrmex-text-xs);
+	font-weight: var(--myrmex-weight-medium);
+	cursor: pointer;
+}
+
+.myrmex-chat__context-toggle:hover {
+	background-color: var(--myrmex-sidebar-hover);
+}
+
+.myrmex-chat__form {
+	display: flex;
+	align-items: flex-end;
+	gap: var(--myrmex-space-2);
+	padding: 6px;
+	padding-inline-start: var(--myrmex-space-3);
+	border: 1px solid var(--myrmex-border);
+	border-radius: calc(var(--myrmex-chat-radius) * 0.75);
+	background-color: var(--myrmex-surface);
+	transition: border-color var(--myrmex-transition), box-shadow var(--myrmex-transition);
+}
+
+.myrmex-chat__form[hidden] {
+	display: none;
+}
+
+.myrmex-chat__form:focus-within {
+	border-color: var(--myrmex-chat-accent);
+	box-shadow: 0 0 0 3px color-mix(in srgb, var(--myrmex-chat-accent) 16%, transparent);
+}
+
+.myrmex-chat__input {
+	flex: 1 1 auto;
+	min-width: 0;
+	max-height: 140px;
+	padding: 6px 0;
+	border: none;
+	outline: none;
+	resize: none;
+	background: transparent;
+	color: var(--myrmex-text);
+	font: inherit;
+	line-height: var(--myrmex-leading);
+}
+
+.myrmex-chat__input:focus,
+.myrmex-chat__input:focus-visible {
+	outline: none;
+}
+
+.myrmex-chat__input::placeholder {
+	color: var(--myrmex-muted);
+}
+
+.myrmex-chat__send {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex: 0 0 auto;
+	width: 36px;
+	height: 36px;
+	padding: 0;
+	border: none;
+	border-radius: calc(var(--myrmex-chat-radius) * 0.55);
+	background-color: var(--myrmex-chat-accent);
+	color: var(--myrmex-chat-accent-text);
+	cursor: pointer;
+	transition: opacity var(--myrmex-transition), transform var(--myrmex-transition);
+}
+
+.myrmex-chat__send:hover:not(:disabled) {
+	transform: translateY(-1px);
+}
+
+.myrmex-chat__send:disabled {
+	opacity: 0.45;
+	cursor: progress;
+}
+
+.myrmex-chat__hint {
+	display: flex;
+	justify-content: space-between;
+	gap: var(--myrmex-space-2);
+	margin: 6px 2px 0;
+	font-size: var(--myrmex-text-xs);
+	color: var(--myrmex-muted);
+}
+
+.myrmex-chat__count {
+	font-variant-numeric: tabular-nums;
+}
+
+.myrmex-chat__count[hidden] {
+	display: none;
+}
+
+.myrmex-chat__count.is-over {
+	color: var(--myrmex-error-text);
+	font-weight: var(--myrmex-weight-semibold);
+}
+
+/* History ------------------------------------------------------------------ */
+
+.myrmex-chat__history-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.myrmex-chat__history-item {
+	display: flex;
+	align-items: center;
+	gap: var(--myrmex-space-1);
+	border-radius: var(--myrmex-radius-md);
+	transition: background-color var(--myrmex-transition);
+}
+
+.myrmex-chat__history-item:hover {
+	background-color: var(--myrmex-surface-alt);
+}
+
+.myrmex-chat__history-item.is-current {
+	background-color: var(--myrmex-primary-soft);
+}
+
+.myrmex-chat__history-open {
+	display: flex;
+	flex-direction: column;
+	flex: 1 1 auto;
+	min-width: 0;
+	padding: 10px var(--myrmex-space-3);
+	border: none;
+	background: transparent;
+	color: var(--myrmex-text);
+	text-align: start;
+	cursor: pointer;
+}
+
+.myrmex-chat__history-title {
+	font-weight: var(--myrmex-weight-medium);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.myrmex-chat__history-meta {
+	margin-top: 2px;
+	font-size: var(--myrmex-text-xs);
+	color: var(--myrmex-muted);
+}
+
+.myrmex-chat__history-item .myrmex-chat__icon-btn {
+	opacity: 0;
+}
+
+.myrmex-chat__history-item:hover .myrmex-chat__icon-btn,
+.myrmex-chat__history-item .myrmex-chat__icon-btn:focus-visible {
+	opacity: 1;
+}
+
+.myrmex-chat__clear {
+	display: block;
+	margin: var(--myrmex-space-4) auto 0;
+	padding: 6px 10px;
+	border: none;
+	border-radius: var(--myrmex-button-radius);
+	background: transparent;
+	color: var(--myrmex-error-text);
+	font-size: var(--myrmex-text-sm);
+	cursor: pointer;
+}
+
+.myrmex-chat__clear:hover {
+	background-color: var(--myrmex-error-soft);
+}
+
+.myrmex-chat__empty {
+	padding: var(--myrmex-space-6) var(--myrmex-space-4);
+	text-align: center;
+	color: var(--myrmex-muted);
+}
+
+.myrmex-chat__empty p {
+	margin-bottom: var(--myrmex-space-3);
+}
+
+/* Dark mode: surfaces follow the Desk; the accent and user bubble carry over,
+ * as the theme does for its own palette. */
+[data-theme="dark"] .myrmex-chat {
+	/* Frappe's variables point back at the Myrmex palette when the theme is on,
+	 * and still give a correct dark panel if only the assistant is enabled. */
+	--myrmex-surface: var(--fg-color);
+	--myrmex-surface-alt: var(--subtle-fg);
+	--myrmex-text: var(--text-color);
+	--myrmex-muted: var(--text-muted);
+	--myrmex-border: var(--border-color);
+	--myrmex-chat-background: var(--myrmex-surface);
+	--myrmex-chat-assistant-bubble: var(--myrmex-surface-alt);
+}
+
+[data-theme="dark"] .myrmex-chat__unread {
+	box-shadow: 0 0 0 3px var(--myrmex-background);
+}
+
+/* Touch devices: history delete buttons are always visible. */
+@media (hover: none) {
+	.myrmex-chat__history-item .myrmex-chat__icon-btn {
+		opacity: 1;
+	}
+}
+
+/* Mobile: the panel takes the screen; the launcher gets out of the way. ---- */
+
+@media (max-width: 575px) {
+	.myrmex-chat {
+		--myrmex-chat-gap: 14px;
+		--myrmex-chat-launcher: 48px;
+	}
+
+	.myrmex-chat.is-open {
+		inset: 0;
+		gap: 0;
+	}
+
+	.myrmex-chat.is-open .myrmex-chat__launcher {
+		display: none;
+	}
+
+	.myrmex-chat__panel {
+		width: 100vw;
+		height: 100dvh;
+		min-height: 0;
+		border: none;
+		border-radius: 0;
+		transform: translateY(24px);
+	}
+
+	.myrmex-chat__header {
+		padding-top: max(var(--myrmex-space-3), env(safe-area-inset-top));
+	}
+
+	.myrmex-chat__composer {
+		padding-bottom: max(var(--myrmex-space-3), env(safe-area-inset-bottom));
+	}
+
+	.myrmex-chat__icon-btn {
+		width: 40px;
+		height: 40px;
+	}
+
+	.myrmex-chat__send {
+		width: 40px;
+		height: 40px;
+	}
+
+	/* 16px stops iOS Safari zooming into the field. */
+	.myrmex-chat__input {
+		font-size: 16px;
+	}
+
+	.myrmex-chat__hint-text {
+		display: none;
+	}
+
+	html.myrmex-chat-open,
+	html.myrmex-chat-open body {
+		overflow: hidden;
+	}
+}
+
+/* Print: never. */
+@media print {
+	.myrmex-chat {
+		display: none !important;
+	}
+}

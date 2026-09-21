@@ -1,0 +1,96 @@
+{
+ "actions": [],
+ "creation": "2026-09-17 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "title",
+  "user",
+  "language",
+  "column_break_1",
+  "last_message_at",
+  "message_count",
+  "started_on_route"
+ ],
+ "fields": [
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Title",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "label": "User",
+   "options": "User",
+   "reqd": 1,
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "language",
+   "fieldtype": "Data",
+   "label": "Language",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "last_message_at",
+   "fieldtype": "Datetime",
+   "label": "Last message",
+   "read_only": 1,
+   "in_list_view": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "message_count",
+   "fieldtype": "Int",
+   "label": "Messages",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "started_on_route",
+   "fieldtype": "Data",
+   "label": "Started on page",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-09-17 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Myrmex",
+ "name": "Chatbot Conversation",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "delete": 1,
+   "email": 0,
+   "export": 1,
+   "print": 0,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 0,
+   "write": 0
+  }
+ ],
+ "sort_field": "last_message_at",
+ "sort_order": "DESC",
+ "states": [],
+ "autoname": "hash",
+ "naming_rule": "Random",
+ "title_field": "title",
+ "show_title_field_in_link": 0,
+ "in_create": 1,
+ "track_changes": 0,
+ "description": "A user's assistant conversation. Created and read through the chatbot API only."
+}

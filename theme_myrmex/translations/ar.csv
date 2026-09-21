@@ -1,0 +1,202 @@
+0 keeps them until the user deletes them.,القيمة 0 تحتفظ بها حتى يحذفها المستخدم.
+AI provider,مزوّد الذكاء الاصطناعي
+API endpoint,عنوان واجهة البرمجة (API)
+Accent colour,لون التمييز
+Accent edge,حافة ملوّنة
+"Add at least one page pattern, or show the assistant everywhere.",أضف نمط صفحة واحدًا على الأقل، أو اعرض المساعد في كل الصفحات.
+All borders,كل الحدود
+Allowed roles,الأدوار المسموح بها
+Application context,سياق التطبيق
+"Applies to list views, report views, child tables and grids.",ينطبق على شاشات القوائم والتقارير والجداول الفرعية والشبكات.
+Ask a question…,اطرح سؤالًا…
+Assistant hidden for this session. Open it again from your user menu.,تم إخفاء المساعد لهذه الجلسة. يمكنك فتحه مجددًا من قائمة المستخدم.
+Assistant is typing,المساعد يكتب
+Assistant message bubble,فقاعة رسائل المساعد
+Assistant name,اسم المساعد
+Assistant not ready,المساعد غير جاهز
+Assistant said:,قال المساعد:
+Azure OpenAI needs the full chat completions URL as the API endpoint.,يتطلب Azure OpenAI عنوان chat/completions الكامل كعنوان لواجهة البرمجة.
+Back to conversation,العودة إلى المحادثة
+Background tint,تظليل الخلفية
+Between 0 and 50.,بين 0 و50.
+Border colour,لون الحدود
+Border width (px),سماكة الحدود (px)
+Borders,الحدود
+Borders and spacing,الحدود والتباعد
+Bottom left,أسفل اليسار
+Bottom right,أسفل اليمين
+Buttons,أزرار
+Cell padding (px),الحشو الداخلي للخلايا (px)
+Centre,في الوسط
+Chatbot Conversation,محادثة المساعد
+Chatbot Message,رسالة المساعد
+Chatbot Settings,إعدادات المساعد
+Chatbot Settings has not been created yet.,لم يتم إنشاء إعدادات المساعد بعد.
+Chatbot Suggestion,اقتراح المساعد
+Close assistant,إغلاق المساعد
+Collapse sidebar,طيّ الشريط الجانبي
+Connection failed,فشل الاتصال
+Connection works,الاتصال يعمل
+Contacting the AI provider,جارٍ الاتصال بمزوّد الذكاء الاصطناعي
+Conversation history,سجل المحادثات
+Conversation history is turned off on this site.,سجل المحادثات معطّل في هذا الموقع.
+Conversations kept per user,عدد المحادثات المحفوظة لكل مستخدم
+Corner radius (px),نصف قطر الزوايا (px)
+Could not load this conversation. Check your connection and try again.,تعذّر تحميل هذه المحادثة. تحقّق من اتصالك وحاول مجددًا.
+Could not load your conversations.,تعذّر تحميل محادثاتك.
+Current page and module,الصفحة والوحدة الحاليتان
+Delete all conversations,حذف كل المحادثات
+Delete all your conversations with the assistant?,هل تريد حذف كل محادثاتك مع المساعد؟
+Delete conversation,حذف المحادثة
+Delete idle conversations after (days),حذف المحادثات غير النشطة بعد (أيام)
+Delete this conversation? This cannot be undone.,هل تريد حذف هذه المحادثة؟ لا يمكن التراجع عن ذلك.
+Document: form views. List: list and report views.,مستند: شاشات النماذج. قائمة: شاشات القوائم والتقارير.
+Don't share,عدم المشاركة
+Edges,عند الطرفين
+Empty shows the suggestion in every language.,إذا تُرك فارغًا يظهر الاقتراح بكل اللغات.
+Enable assistant,تفعيل المساعد
+"Enter to send, Shift+Enter for a new line",Enter للإرسال، وShift+Enter لسطر جديد
+Everywhere,في كل مكان
+Everywhere except listed pages,في كل مكان باستثناء الصفحات المدرجة
+Expand sidebar,توسيع الشريط الجانبي
+Fields of the open document,حقول المستند المفتوح
+Fill in {0} before enabling the assistant.,املأ {0} قبل تفعيل المساعد.
+Header,الرأس
+Header background,خلفية الرأس
+Header text,نص الرأس
+Header weight,سماكة خط الرأس
+Hello {0}! How can I help you today?,مرحبًا {0}! كيف يمكنني مساعدتك اليوم؟
+Hello! How can I help you today?,مرحبًا! كيف يمكنني مساعدتك اليوم؟
+Horizontal lines,خطوط أفقية
+Hover,التمرير
+Hover background,الخلفية عند التمرير
+Invalid message role: {0},دور رسالة غير صالح: {0}
+Keep conversation history,الاحتفاظ بسجل المحادثات
+Last message,آخر رسالة
+Leave a colour empty to follow the active Myrmex theme.,اترك اللون فارغًا ليتبع سمة Myrmex النشطة.
+Leave empty for the provider's default. Azure: the full chat/completions URL including api-version.,اتركه فارغًا لاستخدام القيمة الافتراضية للمزوّد. Azure: عنوان chat/completions الكامل مع api-version.
+Leave empty to allow every Desk user. Portal (website) users never see the assistant.,اتركه فارغًا للسماح لكل مستخدمي Desk. مستخدمو البوابة (الموقع) لا يرون المساعد أبدًا.
+Maximum document fields,الحد الأقصى لحقول المستند
+Maximum message length (characters),الحد الأقصى لطول الرسالة (أحرف)
+Maximum reply tokens,الحد الأقصى لرموز الرد
+Messages per conversation,الرسائل لكل محادثة
+Messages per user per day,الرسائل لكل مستخدم يوميًا
+Messages per user per minute,الرسائل لكل مستخدم في الدقيقة
+Minimal,مبسّط
+Minimize,تصغير
+Myrmex Assistant,مساعد Myrmex
+Never share these DocTypes,عدم مشاركة أنواع المستندات هذه أبدًا
+New conversation,محادثة جديدة
+New {0},{0} جديد
+No saved conversations yet.,لا توجد محادثات محفوظة بعد.
+"One Desk route per line, * as wildcard. Examples: Form/Sales Order/*, List/*, Workspaces/Selling",مسار واحد من Desk في كل سطر، و* كحرف بدل. أمثلة: Form/Sales Order/*، List/*، Workspaces/Selling
+"One DocType per line. User, credentials, logs and the assistant's own records are always excluded.",نوع مستند واحد في كل سطر. المستخدمون وبيانات الاعتماد والسجلات وسجلات المساعد مستبعدة دائمًا.
+Only on listed pages,في الصفحات المدرجة فقط
+Open assistant,فتح المساعد
+Open automatically when the Desk loads,الفتح تلقائيًا عند تحميل Desk
+Open once right after login,الفتح مرة واحدة بعد تسجيل الدخول مباشرة
+Open {0},فتح {0}
+"OpenAI Compatible also covers Ollama, vLLM, LM Studio, Mistral, Groq and similar services.",يشمل OpenAI Compatible أيضًا Ollama وvLLM وLM Studio وMistral وGroq والخدمات المشابهة.
+Page not shared,الصفحة غير مُشارَكة
+Page patterns,أنماط الصفحات
+Pagination alignment,محاذاة ترقيم الصفحات
+Pagination style,نمط ترقيم الصفحات
+Panel background,خلفية اللوحة
+Panel height (px),ارتفاع اللوحة (px)
+Panel width (px),عرض اللوحة (px)
+Pills,أزرار دائرية
+Please log in to use the assistant.,يرجى تسجيل الدخول لاستخدام المساعد.
+Previous messages sent with each question,الرسائل السابقة المرسلة مع كل سؤال
+Prompt sent,النص المُرسَل
+Prompt tokens,رموز الطلب
+Provider latency (ms),زمن استجابة المزوّد (ms)
+"Put credentials in the API key field, not in the endpoint URL.",ضع بيانات الاعتماد في حقل مفتاح API وليس في العنوان.
+Replace the suggestion table with the default prompts?,هل تريد استبدال جدول الاقتراحات بالاقتراحات الافتراضية؟
+Reply language,لغة الردود
+Reply tokens,رموز الرد
+Request timeout (seconds),مهلة الطلب (ثوانٍ)
+Restore default suggestions,استعادة الاقتراحات الافتراضية
+"Rounding of report tables, child tables and grids. List views follow the card radius.",استدارة جداول التقارير والجداول الفرعية والشبكات. أما شاشات القوائم فتتبع استدارة البطاقات.
+Row background,خلفية الصفوف
+Row height (px),ارتفاع الصفوف (px)
+Row hover,تمرير المؤشر فوق الصفوف
+Row text,نص الصفوف
+Rows,الصفوف
+Search or type a command,ابحث أو اكتب أمرًا
+Selected row,الصف المحدد
+Semibold,شبه عريض
+Send message,إرسال الرسالة
+Set a model and test the connection before saving.,حدّد نموذجًا واختبر الاتصال قبل الحفظ.
+Share page,مشاركة الصفحة
+Share this page with the assistant,مشاركة هذه الصفحة مع المساعد
+Show on pages,العرض في الصفحات
+Show only on,العرض فقط في
+Show suggested prompts,عرض الاقتراحات
+Show typing indicator,عرض مؤشر الكتابة
+"Shown when a conversation starts. Leave empty for the built-in, translated greeting.",يظهر عند بدء المحادثة. اتركه فارغًا لاستخدام التحية المدمجة المترجمة.
+Something went wrong.,حدث خطأ ما.
+Spacing,التباعد
+"Square image. Without one, the assistant uses the Myrmex mark with its initial.",صورة مربعة. بدونها يستخدم المساعد شعار Myrmex مع الحرف الأول من اسمه.
+Start a conversation,بدء محادثة
+Start a new conversation,بدء محادثة جديدة
+Started on page,بدأت في الصفحة
+Stop sharing this page with the assistant,إيقاف مشاركة هذه الصفحة مع المساعد
+Stored encrypted and only used on the server. It is never sent to browsers.,يُخزَّن مشفّرًا ويُستخدم على الخادم فقط، ولا يُرسَل إلى المتصفحات أبدًا.
+Stripe background,خلفية الصفوف المخططة
+Striped rows,صفوف مخططة
+Suggested prompts,الاقتراحات
+Suggested questions,أسئلة مقترحة
+System prompt,تعليمات النظام
+Table Styles,أنماط الجداول
+Table radius (px),استدارة الجداول (px)
+Test connection,اختبار الاتصال
+That conversation no longer exists.,هذه المحادثة لم تعد موجودة.
+The AI provider is busy right now. Try again in a minute.,مزوّد الذكاء الاصطناعي مشغول حاليًا. حاول مجددًا بعد دقيقة.
+The AI provider rejected the assistant's credentials. Ask an administrator to check the API key.,رفض مزوّد الذكاء الاصطناعي بيانات اعتماد المساعد. اطلب من المسؤول التحقق من مفتاح API.
+The AI provider returned an error ({0}).,أعاد مزوّد الذكاء الاصطناعي خطأ ({0}).
+The AI provider sent a reply the assistant could not read.,أرسل مزوّد الذكاء الاصطناعي ردًا تعذّر على المساعد قراءته.
+The AI provider sent an unexpectedly large reply.,أرسل مزوّد الذكاء الاصطناعي ردًا كبيرًا بشكل غير متوقع.
+The API endpoint must be a full http(s) URL.,يجب أن يكون عنوان واجهة البرمجة رابط http(s) كاملًا.
+The API endpoint uses plain http. Messages and the API key will travel unencrypted.,يستخدم العنوان http غير المشفّر. ستنتقل الرسائل ومفتاح API دون تشفير.
+The assistant could not be reached. Check your connection.,تعذّر الوصول إلى المساعد. تحقّق من اتصالك.
+The assistant could not reach the AI provider.,تعذّر على المساعد الوصول إلى مزوّد الذكاء الاصطناعي.
+The assistant has no API endpoint configured.,لم يتم ضبط عنوان واجهة البرمجة للمساعد.
+The assistant has no API key configured.,لم يتم ضبط مفتاح API للمساعد.
+The assistant has no model configured.,لم يتم ضبط نموذج للمساعد.
+The assistant is turned off.,المساعد معطّل.
+The assistant returned an empty answer. Try rephrasing.,أعاد المساعد إجابة فارغة. حاول إعادة الصياغة.
+The assistant took too long to answer. Try again in a moment.,استغرق المساعد وقتًا طويلًا للرد. حاول مجددًا بعد قليل.
+The model or deployment name your provider expects.,اسم النموذج أو النشر الذي يتوقعه المزوّد.
+"The page or document the user was on. Only the reference is stored, not its data.",الصفحة أو المستند الذي كان المستخدم عليه. تُخزَّن الإشارة فقط دون البيانات.
+Theme updated,تم تحديث السمة
+Thinking…,جارٍ التفكير…
+This conversation is full. Start a new one to keep going.,هذه المحادثة ممتلئة. ابدأ محادثة جديدة للمتابعة.
+This page,هذه الصفحة
+"Tone, scope and company-specific guidance. Safety and permission rules are always added after it and cannot be removed here.",الأسلوب والنطاق والإرشادات الخاصة بالشركة. تُضاف قواعد الأمان والصلاحيات بعدها دائمًا ولا يمكن إزالتها من هنا.
+Try again,إعادة المحاولة
+Turn on after the AI provider below is configured and tested.,فعّله بعد ضبط مزوّد الذكاء الاصطناعي أدناه واختباره.
+Type a message first.,اكتب رسالة أولًا.
+Unknown AI provider: {0},مزوّد ذكاء اصطناعي غير معروف: {0}
+Unknown error,خطأ غير معروف
+Untitled conversation,محادثة بلا عنوان
+Uppercase headers,رؤوس بأحرف كبيرة
+Use at most 100 page patterns.,استخدم 100 نمط صفحة على الأكثر.
+User language,لغة المستخدم
+User language follows each person's language setting in Frappe.,لغة المستخدم تتبع إعداد اللغة الخاص بكل شخص في Frappe.
+User's open assignments (ToDo),مهام المستخدم المفتوحة (ToDo)
+User's recent changes in the current DocType,تعديلات المستخدم الأخيرة في نوع المستند الحالي
+Uses only data you can access,يستخدم فقط البيانات المتاحة لك
+Using: {0},يستخدم: {0}
+View conversations,عرض المحادثات
+Welcome message,رسالة الترحيب
+What the assistant may read about the page a user is on. Everything is read with that user's permissions; restricted fields and records are left out.,ما يمكن للمساعد قراءته عن الصفحة التي يتصفحها المستخدم. تتم القراءة بصلاحيات هذا المستخدم، وتُستبعد الحقول والسجلات المقيّدة.
+"When off, nothing is stored on the server and conversations last only for the browser tab.",عند التعطيل لا يُخزَّن شيء على الخادم، وتبقى المحادثات فقط طوال بقاء علامة التبويب مفتوحة.
+You are not allowed to use the assistant.,غير مسموح لك باستخدام المساعد.
+You said:,قلت:
+"You're sending messages quickly. Wait a minute, then try again.",أنت ترسل الرسائل بسرعة. انتظر دقيقة ثم حاول مجددًا.
+You've reached today's message limit. It resets within 24 hours.,لقد بلغت حد الرسائل لليوم. سيُعاد ضبطه خلال 24 ساعة.
+Your message bubble,فقاعة رسائلك
+Your message is too long. Keep it under {0} characters.,رسالتك طويلة جدًا. اجعلها أقل من {0} حرفًا.
+{0} answered in {1} ms using {2}.,استجاب {0} خلال {1} ms باستخدام {2}.
+{0} is not a valid hex colour: {1},{0} ليس لونًا سداسيًا صالحًا: {1}
+{0} list,قائمة {0}

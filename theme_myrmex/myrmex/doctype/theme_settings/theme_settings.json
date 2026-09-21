@@ -1,0 +1,526 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-01-01 00:00:00.000000",
+ "description": "Colours, sizes and behaviour for the Theme Myrmex UI layer.",
+ "doctype": "DocType",
+ "documentation": "",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "general_section",
+  "enable_theme",
+  "theme_preset",
+  "general_col_1",
+  "default_appearance",
+  "density",
+  "enable_animations",
+  "colors_section",
+  "primary_color",
+  "secondary_color",
+  "background_color",
+  "surface_color",
+  "colors_col_1",
+  "text_color",
+  "muted_text_color",
+  "border_color",
+  "colors_col_2",
+  "success_color",
+  "warning_color",
+  "error_color",
+  "sidebar_section",
+  "sidebar_background",
+  "sidebar_text",
+  "sidebar_active",
+  "sidebar_col_1",
+  "sidebar_hover",
+  "sidebar_icon",
+  "sidebar_width",
+  "collapse_sidebar_by_default",
+  "navbar_section",
+  "navbar_background",
+  "navbar_text",
+  "navbar_col_1",
+  "navbar_border",
+  "navbar_search_background",
+  "navbar_height",
+  "components_section",
+  "card_radius",
+  "button_radius",
+  "input_radius",
+  "components_col_1",
+  "card_padding",
+  "shadow_size",
+  "tables_section",
+  "table_header_background",
+  "table_header_text",
+  "table_header_weight",
+  "table_header_uppercase",
+  "tables_col_1",
+  "table_row_background",
+  "table_row_text",
+  "zebra_tables",
+  "table_stripe_background",
+  "tables_col_2",
+  "table_hover_effect",
+  "table_row_hover",
+  "table_selected_background",
+  "tables_borders_section",
+  "table_border_style",
+  "table_border_color",
+  "table_border_width",
+  "tables_borders_col_1",
+  "table_radius",
+  "table_row_height",
+  "table_cell_padding",
+  "tables_borders_col_2",
+  "table_pagination_style",
+  "table_pagination_align",
+  "advanced_section",
+  "custom_css"
+ ],
+ "fields": [
+  {
+   "fieldname": "general_section",
+   "fieldtype": "Section Break",
+   "label": "General"
+  },
+  {
+   "default": "1",
+   "description": "Turn the theme off to fall back to the stock ERPNext look without uninstalling the app.",
+   "fieldname": "enable_theme",
+   "fieldtype": "Check",
+   "label": "Enable Theme Myrmex"
+  },
+  {
+   "default": "Myrmex Default",
+   "fieldname": "theme_preset",
+   "fieldtype": "Select",
+   "label": "Preset",
+   "options": "Myrmex Default\nMyrmex Blue\nMyrmex Dark\nMyrmex Minimal\nMyrmex Enterprise\nCustom"
+  },
+  {
+   "fieldname": "general_col_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "System",
+   "description": "Applied the first time a user opens the Desk. Their own choice always wins afterwards.",
+   "fieldname": "default_appearance",
+   "fieldtype": "Select",
+   "label": "Default appearance",
+   "options": "Light\nDark\nSystem"
+  },
+  {
+   "default": "Comfortable",
+   "fieldname": "density",
+   "fieldtype": "Select",
+   "label": "Density",
+   "options": "Comfortable\nCompact"
+  },
+  {
+   "default": "1",
+   "fieldname": "enable_animations",
+   "fieldtype": "Check",
+   "label": "Use transitions"
+  },
+  {
+   "fieldname": "colors_section",
+   "fieldtype": "Section Break",
+   "label": "Colours"
+  },
+  {
+   "default": "#1DA1F2",
+   "fieldname": "primary_color",
+   "fieldtype": "Color",
+   "label": "Primary colour"
+  },
+  {
+   "default": "#1426A9",
+   "fieldname": "secondary_color",
+   "fieldtype": "Color",
+   "label": "Secondary colour"
+  },
+  {
+   "default": "#F7F7F9",
+   "fieldname": "background_color",
+   "fieldtype": "Color",
+   "label": "Background"
+  },
+  {
+   "default": "#FFFFFF",
+   "fieldname": "surface_color",
+   "fieldtype": "Color",
+   "label": "Surface"
+  },
+  {
+   "fieldname": "colors_col_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "#111827",
+   "fieldname": "text_color",
+   "fieldtype": "Color",
+   "label": "Text"
+  },
+  {
+   "default": "#6B7280",
+   "fieldname": "muted_text_color",
+   "fieldtype": "Color",
+   "label": "Muted text"
+  },
+  {
+   "default": "#E5E7EB",
+   "fieldname": "border_color",
+   "fieldtype": "Color",
+   "label": "Border"
+  },
+  {
+   "fieldname": "colors_col_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "#22C55E",
+   "fieldname": "success_color",
+   "fieldtype": "Color",
+   "label": "Success"
+  },
+  {
+   "default": "#F59E0B",
+   "fieldname": "warning_color",
+   "fieldtype": "Color",
+   "label": "Warning"
+  },
+  {
+   "default": "#EF4444",
+   "fieldname": "error_color",
+   "fieldtype": "Color",
+   "label": "Error"
+  },
+  {
+   "fieldname": "sidebar_section",
+   "fieldtype": "Section Break",
+   "label": "Sidebar"
+  },
+  {
+   "default": "#FFFFFF",
+   "fieldname": "sidebar_background",
+   "fieldtype": "Color",
+   "label": "Sidebar background"
+  },
+  {
+   "default": "#111827",
+   "fieldname": "sidebar_text",
+   "fieldtype": "Color",
+   "label": "Sidebar text"
+  },
+  {
+   "default": "#1DA1F2",
+   "fieldname": "sidebar_active",
+   "fieldtype": "Color",
+   "label": "Sidebar active"
+  },
+  {
+   "fieldname": "sidebar_col_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "#F1F5F9",
+   "fieldname": "sidebar_hover",
+   "fieldtype": "Color",
+   "label": "Sidebar hover"
+  },
+  {
+   "default": "#6B7280",
+   "fieldname": "sidebar_icon",
+   "fieldtype": "Color",
+   "label": "Sidebar icon"
+  },
+  {
+   "default": "260",
+   "fieldname": "sidebar_width",
+   "fieldtype": "Int",
+   "label": "Sidebar width (px)",
+   "non_negative": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "collapse_sidebar_by_default",
+   "fieldtype": "Check",
+   "label": "Start collapsed"
+  },
+  {
+   "fieldname": "navbar_section",
+   "fieldtype": "Section Break",
+   "label": "Navbar"
+  },
+  {
+   "default": "#FFFFFF",
+   "fieldname": "navbar_background",
+   "fieldtype": "Color",
+   "label": "Navbar background"
+  },
+  {
+   "default": "#111827",
+   "fieldname": "navbar_text",
+   "fieldtype": "Color",
+   "label": "Navbar text"
+  },
+  {
+   "fieldname": "navbar_col_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "#E5E7EB",
+   "fieldname": "navbar_border",
+   "fieldtype": "Color",
+   "label": "Navbar border"
+  },
+  {
+   "default": "#F3F4F6",
+   "fieldname": "navbar_search_background",
+   "fieldtype": "Color",
+   "label": "Search background"
+  },
+  {
+   "default": "60",
+   "fieldname": "navbar_height",
+   "fieldtype": "Int",
+   "label": "Navbar height (px)",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "components_section",
+   "fieldtype": "Section Break",
+   "label": "Components"
+  },
+  {
+   "default": "14",
+   "fieldname": "card_radius",
+   "fieldtype": "Int",
+   "label": "Card radius (px)",
+   "non_negative": 1
+  },
+  {
+   "default": "8",
+   "fieldname": "button_radius",
+   "fieldtype": "Int",
+   "label": "Button radius (px)",
+   "non_negative": 1
+  },
+  {
+   "default": "8",
+   "fieldname": "input_radius",
+   "fieldtype": "Int",
+   "label": "Input radius (px)",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "components_col_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "20",
+   "fieldname": "card_padding",
+   "fieldtype": "Int",
+   "label": "Card padding (px)",
+   "non_negative": 1
+  },
+  {
+   "default": "Medium",
+   "fieldname": "shadow_size",
+   "fieldtype": "Select",
+   "label": "Shadow",
+   "options": "None\nSmall\nMedium\nLarge"
+  },
+  {
+   "description": "Applies to list views, report views, child tables and grids.",
+   "fieldname": "tables_section",
+   "fieldtype": "Section Break",
+   "label": "Table Styles"
+  },
+  {
+   "default": "#FBFBFC",
+   "fieldname": "table_header_background",
+   "fieldtype": "Color",
+   "label": "Header background"
+  },
+  {
+   "default": "#6B7280",
+   "fieldname": "table_header_text",
+   "fieldtype": "Color",
+   "label": "Header text"
+  },
+  {
+   "default": "Semibold",
+   "fieldname": "table_header_weight",
+   "fieldtype": "Select",
+   "label": "Header weight",
+   "options": "Regular\nMedium\nSemibold"
+  },
+  {
+   "default": "0",
+   "fieldname": "table_header_uppercase",
+   "fieldtype": "Check",
+   "label": "Uppercase headers"
+  },
+  {
+   "fieldname": "tables_col_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "#FFFFFF",
+   "fieldname": "table_row_background",
+   "fieldtype": "Color",
+   "label": "Row background"
+  },
+  {
+   "default": "#111827",
+   "fieldname": "table_row_text",
+   "fieldtype": "Color",
+   "label": "Row text"
+  },
+  {
+   "default": "0",
+   "fieldname": "zebra_tables",
+   "fieldtype": "Check",
+   "label": "Striped rows"
+  },
+  {
+   "default": "#F8F8FA",
+   "fieldname": "table_stripe_background",
+   "fieldtype": "Color",
+   "label": "Stripe background"
+  },
+  {
+   "fieldname": "tables_col_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Background tint",
+   "fieldname": "table_hover_effect",
+   "fieldtype": "Select",
+   "label": "Row hover",
+   "options": "None\nBackground tint\nAccent edge"
+  },
+  {
+   "default": "#F6F7F9",
+   "fieldname": "table_row_hover",
+   "fieldtype": "Color",
+   "label": "Hover background"
+  },
+  {
+   "default": "#E8F5FE",
+   "fieldname": "table_selected_background",
+   "fieldtype": "Color",
+   "label": "Selected row"
+  },
+  {
+   "fieldname": "tables_borders_section",
+   "fieldtype": "Section Break",
+   "label": "Borders and spacing"
+  },
+  {
+   "default": "Horizontal lines",
+   "fieldname": "table_border_style",
+   "fieldtype": "Select",
+   "label": "Borders",
+   "options": "All borders\nHorizontal lines\nNone"
+  },
+  {
+   "default": "#E5E7EB",
+   "fieldname": "table_border_color",
+   "fieldtype": "Color",
+   "label": "Border colour"
+  },
+  {
+   "default": "1",
+   "fieldname": "table_border_width",
+   "fieldtype": "Int",
+   "label": "Border width (px)"
+  },
+  {
+   "fieldname": "tables_borders_col_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "10",
+   "description": "Rounding of report tables, child tables and grids. List views follow the card radius.",
+   "fieldname": "table_radius",
+   "fieldtype": "Int",
+   "label": "Table radius (px)"
+  },
+  {
+   "default": "42",
+   "fieldname": "table_row_height",
+   "fieldtype": "Int",
+   "label": "Row height (px)"
+  },
+  {
+   "default": "16",
+   "fieldname": "table_cell_padding",
+   "fieldtype": "Int",
+   "label": "Cell padding (px)"
+  },
+  {
+   "fieldname": "tables_borders_col_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Pills",
+   "fieldname": "table_pagination_style",
+   "fieldtype": "Select",
+   "label": "Pagination style",
+   "options": "Pills\nButtons\nMinimal"
+  },
+  {
+   "default": "Edges",
+   "fieldname": "table_pagination_align",
+   "fieldtype": "Select",
+   "label": "Pagination alignment",
+   "options": "Edges\nLeft\nCentre\nRight"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "advanced_section",
+   "fieldtype": "Section Break",
+   "label": "Advanced"
+  },
+  {
+   "description": "Appended after every Myrmex stylesheet. Use it for site-specific tweaks.",
+   "fieldname": "custom_css",
+   "fieldtype": "Code",
+   "label": "Custom CSS",
+   "options": "CSS"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Myrmex",
+ "name": "Theme Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "All"
+  }
+ ],
+ "quick_entry": 0,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
